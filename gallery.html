@@ -1,127 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Gallery — Nadaarte</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
   <style>
-    body {
-      font-family: 'Playfair Display', serif;
-      margin: 0;
-      background: #fafafa;
-      color: #222;
-    }
+    body { font-family: 'Playfair Display', serif; margin:0; background:#fafafa; color:#222; }
+    header nav { display:block; padding:1rem 2rem; background:#fff; box-shadow:0 2px 4px rgba(0,0,0,0.1); }
+    header nav h1 { font-weight:700;font-size:2rem; margin-bottom:0.5rem; }
+    header nav ul { list-style:none; display:flex; gap:2rem; padding:0;margin:0;}
+    header nav ul a { text-decoration:none; color:#222; transition:color .3s; }
+    header nav ul a:hover { color:#b35825; }
+    .intro { text-align:center; padding:3rem 2rem; }
+    .gallery { display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; padding:1rem 2rem;}
+    .gallery img { width:380px; height:200px; object-fit:cover; border-radius:8px; box-shadow:0 4px 6px rgba(0,0,0,0.1); cursor:pointer; transition:transform .3s;}
+    .gallery img:hover { transform:scale(1.03); }
+    .more-section { display:none; flex-wrap:wrap; gap:1rem; margin-top:2rem; justify-content:center; }
+    .btn-more { display:block; margin:2rem auto; padding:.75rem 1.5rem; border:1px solid #b35825; background:#fff; color:#b35825; cursor:pointer; border-radius:4px; font-size:1rem; }
+    .btn-more:hover { background:#b35825; color:#fff; }
 
-    header nav {
-      display: block;
-      padding: 1rem 2rem;
-      background: #fff;
-      box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
-    }
+    /* Lightbox */
+    .overlay { display:none; position:fixed; top:0;left:0;width:100vw;height:100vh;background:rgba(0,0,0,0.7); align-items:center;justify-content:center; z-index:1000; }
+    .overlay.active { display:flex; }
+    .lightbox-content { position:relative; max-width:90%; max-height:90%; text-align:center; }
+    .lightbox-content img { max-width:100%; max-height:80vh; border-radius:8px; }
+    .close-btn { position:absolute; top:-10px; right:-10px; background:#fff; border-radius:50%; width:30px;height:30px; line-height:30px; text-decoration:none; color:#222; font-weight:bold; }
+    .caption { margin-top:1rem; background:#fff; padding:0.5rem 1rem; border-radius:4px; color:#333; }
 
-    header nav h1 {
-      font-weight: 700;
-      font-size: 2rem;
-      letter-spacing: -0.05em;
-      margin-bottom: 0.5rem;
-    }
-
-    header nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      margin: 0;
-      padding: 0;
-    }
-
-    header nav ul li a {
-      text-decoration: none;
-      color: #222;
-      font-weight: 400;
-      font-size: 1rem;
-      transition: color 0.3s ease;
-    }
-
-    header nav ul li a:hover {
-      color: #b35825;
-    }
-
-    .intro {
-      text-align: center;
-      padding: 4rem 2rem 2rem;
-    }
-
-    .intro h2 {
-      font-weight: 700;
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      color: #444;
-    }
-
-    .intro p {
-      font-weight: 400;
-      font-size: 0.875rem;
-      color: #aaa;
-    }
-
-    .gallery {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      justify-content: center;
-      padding: 2rem;
-    }
-
-    .art-image {
-      width: 380px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.875rem;
-      color: #999;
-      border-top: 1px solid #eee;
+    @media(max-width:420px) {
+      .gallery img, .more-section img { width:90vw; height:auto; }
     }
   </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <h1>Nadaarte</h1>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="gallery.html" aria-current="page">Gallery</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main>
-    <section class="intro">
-      <h2>Gallery of Works</h2>
-      <p>Selected oil paintings</p>
-    </section>
+<header>
+  <nav>
+    <h1>Nadaarte</h1>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="gallery.html" aria-current="page">Gallery</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
+</header>
 
-    <section class="gallery">
-      <img class="art-image" src="001.jpg" alt="Artwork 1" />
-      <img class="art-image" src="002.jpg" alt="Artwork 2" />
-      <img class="art-image" src="003.PNG" alt="Artwork 3" />
-      <img class="art-image" src="004.jpg" alt="Artwork 4" />
-      <img class="art-image" src="005.jpg" alt="Artwork 5" />
-      <img class="art-image" src="006.jpg" alt="Artwork 6" />
-      <img class="art-image" src="007.jpg" alt="Artwork 7" />
-    </section>
-  </main>
+<main>
+  <section class="intro">
+    <h2>Gallery of Works</h2>
+    <p>Explore selected oil paintings</p>
+  </section>
 
-  <footer>
-    <p>&copy; 2025 Nadaarte. All rights reserved.</p>
-  </footer>
+  <section class="gallery">
+    <img src="010.jpg" alt="Artwork 010" data-title="Oil painting 010 – 2024, 50×70 cm">
+    <img src="008.jpg" alt="Artwork 008" data-title="Portrait 008 – 2023, 60×80 cm">
+    <img src="004.jpg" alt="Artwork 004" data-title="Landscape 004 – 2022, 45×60 cm">
+    <img src="006.jpg" alt="Artwork 006" data-title="Figure 006 – 2024, 55×65 cm">
+    <img src="003.PNG" alt="Artwork 003" data-title="Oil painting 003 – 2023, 50×50 cm">
+    <img src="002.jpg" alt="Artwork 002" data-title="Landscape 002 – 2022, 40×60 cm">
+  </section>
+
+  <button class="btn-more">Show More</button>
+
+  <section class="more-section">
+    <!-- 更多作品示例 -->
+    <img src="009.jpg" alt="Artwork 009" data-title="Artwork 009 description">
+    <img src="011.jpg" alt="Artwork 011" data-title="Artwork 011 description">
+    <!-- 你可继续添加 -->
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Nadaarte. All rights reserved.</p>
+</footer>
+
+<div class="overlay" id="overlay">
+  <div class="lightbox-content">
+    <a href="#" class="close-btn" id="closeBtn">&times;</a>
+    <img src="" alt="" id="lightboxImage">
+    <div class="caption" id="lightboxCaption"></div>
+  </div>
+</div>
+
+<script>
+  const overlay = document.getElementById('overlay');
+  const lightboxImage = document.getElementById('lightboxImage');
+  const lightboxCaption = document.getElementById('lightboxCaption');
+  document.querySelectorAll('.gallery img, .more-section img').forEach(img => {
+    img.addEventListener('click', () => {
+      overlay.classList.add('active');
+      lightboxImage.src = img.src;
+      lightboxCaption.textContent = img.dataset.title || img.alt;
+    });
+  });
+  document.getElementById('closeBtn').addEventListener('click', e => {
+    e.preventDefault();
+    overlay.classList.remove('active');
+  });
+  document.querySelector('.btn-more').addEventListener('click', () => {
+    document.querySelector('.more-section').classList.toggle('active');
+    document.querySelector('.more-section').style.display = document.querySelector('.more-section').style.display === 'flex' ? 'none' : 'flex';
+    document.querySelector('.btn-more').textContent = document.querySelector('.more-section').style.display === 'flex' ? 'Show Less' : 'Show More';
+  });
+</script>
+
 </body>
 </html>
