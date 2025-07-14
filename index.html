@@ -57,28 +57,29 @@
 
     .intro h2 {
       font-weight: 700;
-      font-size: 1.5rem;
-      color: #444;
+      font-size: 1.5rem; /* 修改后的字体大小 */
       margin-bottom: 0.5rem;
+      color: #444; /* 灰色 */
     }
 
     .intro p {
+      font-weight: 400;
       font-size: 0.875rem;
-      color: #aaa;
+      color: #aaa; /* 更浅的灰色 */
     }
 
     .gallery {
       display: flex;
+      gap: 1rem;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1rem;
-      padding: 2rem;
+      padding: 1rem 2rem 4rem;
     }
 
     .art-image {
-      width: 100%;
-      max-width: 300px;
-      height: auto;
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
       border-radius: 8px;
       box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
     }
@@ -112,13 +113,13 @@
     </section>
 
     <section class="gallery">
-      <img class="art-image" src="images/001.jpg" alt="Artwork 1" />
-      <img class="art-image" src="images/002.jpg" alt="Artwork 2" />
-      <img class="art-image" src="images/003.jpg" alt="Artwork 3" />
-      <img class="art-image" src="images/004.jpg" alt="Artwork 4" />
-      <img class="art-image" src="images/005.jpg" alt="Artwork 5" />
-      <img class="art-image" src="images/006.jpg" alt="Artwork 6" />
-      <img class="art-image" src="images/007.jpg" alt="Artwork 7" />
+      <img class="art-image" src="001.jpg" alt="Artwork 1">
+      <img class="art-image" src="002.jpg" alt="Artwork 2">
+      <img class="art-image" src="003.PNG" alt="Artwork 3">
+      <img class="art-image" src="004.jpg" alt="Artwork 4">
+      <img class="art-image" src="005.jpg" alt="Artwork 5">
+      <img class="art-image" src="006.jpg" alt="Artwork 6">
+      <img class="art-image" src="007.jpg" alt="Artwork 7">
     </section>
   </main>
 
