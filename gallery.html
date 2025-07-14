@@ -5,22 +5,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Gallery — Nadaarte</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
   <style>
+    body {
+      font-family: 'Playfair Display', serif;
+      margin: 0;
+      background: #fafafa;
+      color: #222;
+    }
+
     header nav {
       display: block;
       padding: 1rem 2rem;
       background: #fff;
       box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
     }
+
     header nav h1 {
       font-weight: 700;
       font-size: 2rem;
       letter-spacing: -0.05em;
-      cursor: default;
       margin-bottom: 0.5rem;
-      text-align: left;
     }
+
     header nav ul {
       list-style: none;
       display: flex;
@@ -28,6 +34,7 @@
       margin: 0;
       padding: 0;
     }
+
     header nav ul li a {
       text-decoration: none;
       color: #222;
@@ -35,8 +42,51 @@
       font-size: 1rem;
       transition: color 0.3s ease;
     }
+
     header nav ul li a:hover {
       color: #b35825;
+    }
+
+    .intro {
+      text-align: center;
+      padding: 4rem 2rem 2rem;
+    }
+
+    .intro h2 {
+      font-weight: 700;
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #444;
+    }
+
+    .intro p {
+      font-weight: 400;
+      font-size: 0.875rem;
+      color: #aaa;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    .art-image {
+      width: 380px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.875rem;
+      color: #999;
+      border-top: 1px solid #eee;
     }
   </style>
 </head>
@@ -54,12 +104,19 @@
   </header>
 
   <main>
-    <section class="gallery" style="padding: 2rem; display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center;">
-      <div class="art-placeholder red" style="flex: 1 1 200px; height: 200px; border-radius: 8px; box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);"></div>
-      <div class="art-placeholder blue" style="flex: 1 1 200px; height: 200px; border-radius: 8px; box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);"></div>
-      <div class="art-placeholder green" style="flex: 1 1 200px; height: 200px; border-radius: 8px; box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);"></div>
-      <div class="art-placeholder beige" style="flex: 1 1 200px; height: 200px; border-radius: 8px; box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);"></div>
-      <div class="art-placeholder orange" style="flex: 1 1 200px; height: 200px; border-radius: 8px; box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);"></div>
+    <section class="intro">
+      <h2>Gallery of Works</h2>
+      <p>Selected oil paintings</p>
+    </section>
+
+    <section class="gallery">
+      <img class="art-image" src="001.jpg" alt="Artwork 1" />
+      <img class="art-image" src="002.jpg" alt="Artwork 2" />
+      <img class="art-image" src="003.PNG" alt="Artwork 3" />
+      <img class="art-image" src="004.jpg" alt="Artwork 4" />
+      <img class="art-image" src="005.jpg" alt="Artwork 5" />
+      <img class="art-image" src="006.jpg" alt="Artwork 6" />
+      <img class="art-image" src="007.jpg" alt="Artwork 7" />
     </section>
   </main>
 
