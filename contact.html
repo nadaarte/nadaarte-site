@@ -6,33 +6,56 @@
   <title>Contact — Nadaarte</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
-<header>
-  <div class="brand">
-    <h1>Nadaarte</h1>
-  </div>
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="about.html" aria-current="page">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+  <style>
+    header nav {
+      display: block;
+      padding: 1rem 2rem;
+      background: #fff;
+      box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+    }
+    header nav h1 {
+      font-weight: 700;
+      font-size: 2rem;
+      letter-spacing: -0.05em;
+      cursor: default;
+      margin-bottom: 0.5rem;
+      text-align: left;
+    }
+    header nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+    header nav ul li a {
+      text-decoration: none;
+      color: #222;
+      font-weight: 400;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+    header nav ul li a:hover {
+      color: #b35825;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <h1>Nadaarte</h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
   <main>
-    <section class="contact-content">
+    <section class="contact-content" style="padding: 2rem;">
       <h2>Contact</h2>
       <p>You can reach Wenwen Cai at:</p>
       <ul>
-        <li>Email: <a href="mailto:douwenwen@yahoo.com">douwenwen@yahoo.com</a></li>
-        <li>Based in The Hague, Netherlands & Valencia, Spain</li>
-      </ul>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Nadaarte. All rights reserved.</p>
-  </footer>
-</body>
-</html>
+        <li>Email: <a href="mailto:douwenwen@yahoo.com">
