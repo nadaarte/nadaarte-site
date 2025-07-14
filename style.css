@@ -1,98 +1,101 @@
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500&family=Poppins:wght@300;500;700&display=swap');
+/* 基础字体 */
+body {
+  font-family: 'Playfair Display', serif;
+  margin: 0;
+  background: #fafafa;
+  color: #222;
+}
 
-* {
-  box-sizing: border-box;
+/* 顶部导航 */
+header nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  background: #fff;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+}
+
+/* logo 字体设置 */
+header nav h1 {
+  font-weight: 700;
+  font-size: 2rem;
+  letter-spacing: -0.05em; /* 字母间距紧一点 */
+  cursor: default;
+}
+
+/* 让 “Nadaarte” 中的 “arte” 连在一起且N大写其他小写 */
+header nav h1::after {
+  content: "";
+}
+
+/* 导航菜单 */
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
   margin: 0;
   padding: 0;
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
-  line-height: 1.6;
-  background-color: #fff;
-  color: #333;
-}
-
-header {
-  background-color: #fff;
-  border-bottom: 1px solid #eee;
-  padding: 20px 0;
-  text-align: center;
-}
-
-header h1 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 36px;
-  font-weight: 500;
-  letter-spacing: 0.5px;
-  text-transform: none;
-  cursor: default;
-}
-
-nav ul {
-  list-style: none;
-  margin-top: 10px;
-}
-
-nav ul li {
-  display: inline-block;
-  margin: 0 15px;
-}
-
-nav ul li a {
+header nav ul li a {
   text-decoration: none;
-  color: #444;
-  font-weight: 500;
+  color: #222;
+  font-weight: 400;
+  font-size: 1rem;
   transition: color 0.3s ease;
 }
 
-nav ul li a:hover {
-  color: #000;
+header nav ul li a:hover {
+  color: #b35825; /* 时尚的暖色调，突出 */
 }
 
+/* 介绍部分 */
 .intro {
-  padding: 60px 20px;
   text-align: center;
+  padding: 4rem 2rem 2rem;
 }
 
 .intro h2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-size: 26px;
-  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
 }
 
 .intro p {
-  max-width: 600px;
-  margin: 0 auto;
-  font-size: 16px;
+  font-weight: 400;
+  font-size: 1.25rem;
   color: #555;
 }
 
+/* 画廊色块占位 */
 .gallery {
   display: flex;
+  gap: 1rem;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 20px;
-  padding: 40px 20px;
+  padding: 1rem 2rem 4rem;
 }
 
 .art-placeholder {
-  width: 280px;
-  height: 320px;
-  border-radius: 4px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  flex: 1 1 200px;
+  height: 200px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
 }
 
-.red    { background-color: #c45858; }
-.blue   { background-color: #6a8caf; }
-.green  { background-color: #6c9e77; }
-.beige  { background-color: #d8c9b3; }
-.orange { background-color: #e69e6e; }
+/* 各色块 */
+.red { background-color: #c94c4c; }
+.blue { background-color: #4c82c9; }
+.green { background-color: #4cc97b; }
+.beige { background-color: #e6d1b3; }
+.orange { background-color: #e6a14c; }
 
+/* 页脚 */
 footer {
-  background-color: #f9f9f9;
   text-align: center;
-  padding: 20px 0;
-  font-size: 14px;
-  color: #888;
+  padding: 2rem;
+  font-size: 0.875rem;
+  color: #999;
+  border-top: 1px solid #eee;
 }
