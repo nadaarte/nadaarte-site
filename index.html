@@ -12,23 +12,20 @@
       background: #fafafa;
       color: #222;
     }
-
     header nav {
-      display: block;
+      display: block; /* 让h1和ul分两行 */
       padding: 1rem 2rem;
       background: #fff;
       box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
     }
-
     header nav h1 {
       font-weight: 700;
       font-size: 2rem;
       letter-spacing: -0.05em;
       cursor: default;
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.5rem; /* 增加间距 */
       text-align: left;
     }
-
     header nav ul {
       list-style: none;
       display: flex;
@@ -36,7 +33,6 @@
       margin: 0;
       padding: 0;
     }
-
     header nav ul li a {
       text-decoration: none;
       color: #222;
@@ -44,47 +40,38 @@
       font-size: 1rem;
       transition: color 0.3s ease;
     }
-
     header nav ul li a:hover {
       color: #b35825;
     }
-
-    .intro {
+    main .intro {
       text-align: center;
       padding: 4rem 2rem 2rem;
     }
-
-    .intro h2 {
+    main .intro h2 {
       font-weight: 700;
       font-size: 1.5rem; /* 调小字体 */
       margin-bottom: 0.5rem;
       color: #555;
     }
-
-    .intro p {
+    main .intro p {
       font-weight: 400;
-      font-size: 1rem; /* 更小 */
+      font-size: 1rem; /* 再小一点 */
       color: #999;
-      margin-top: 0;
     }
-
     .gallery {
       display: flex;
-      gap: 1rem;
       flex-wrap: wrap;
       justify-content: center;
+      gap: 1rem;
       padding: 1rem 2rem 4rem;
     }
-
     .art-image {
-      width: 380px;    /* 宽度380 */
-      height: 200px;   /* 固定高度200 */
-      object-fit: cover; /* 图片裁剪填充 */
+      width: 380px;
+      height: 200px;
+      object-fit: cover;
       border-radius: 8px;
       box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
-      display: block;
     }
-
     footer {
       text-align: center;
       padding: 2rem;
@@ -92,7 +79,6 @@
       color: #999;
       border-top: 1px solid #eee;
     }
-
   </style>
 </head>
 <body>
@@ -115,13 +101,15 @@
     </section>
 
     <section class="gallery">
-      <img src="images/007.jpg" alt="Artwork 1" class="art-image" />
-      <img src="images/006.jpg" alt="Artwork 2" class="art-image" />
-      <img src="images/005.jpg" alt="Artwork 3" class="art-image" />
+      <!-- 先放 001~003 -->
+      <img src="images/001.jpg" alt="Artwork 1" class="art-image" />
+      <img src="images/002.jpg" alt="Artwork 2" class="art-image" />
+      <img src="images/003.jpg" alt="Artwork 3" class="art-image" />
+      <!-- 再放 004~007 -->
       <img src="images/004.jpg" alt="Artwork 4" class="art-image" />
-      <img src="images/003.jpg" alt="Artwork 5" class="art-image" />
-      <img src="images/002.jpg" alt="Artwork 6" class="art-image" />
-      <img src="images/001.jpg" alt="Artwork 7" class="art-image" />
+      <img src="images/005.jpg" alt="Artwork 5" class="art-image" />
+      <img src="images/006.jpg" alt="Artwork 6" class="art-image" />
+      <img src="images/007.jpg" alt="Artwork 7" class="art-image" />
     </section>
   </main>
 
