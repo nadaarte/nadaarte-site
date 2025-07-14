@@ -14,32 +14,29 @@
     }
 
     header nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      display: block;
       padding: 1rem 2rem;
       background: #fff;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
     }
 
     header nav h1 {
-      font-weight: 700;
       font-size: 2rem;
+      margin: 0 0 0.5rem;
     }
 
     header nav ul {
       list-style: none;
       display: flex;
-      gap: 1.5rem;
-      margin: 0;
+      gap: 2rem;
       padding: 0;
+      margin: 0;
     }
 
     header nav ul li a {
       text-decoration: none;
       color: #222;
       font-size: 1rem;
-      transition: color 0.3s ease;
     }
 
     header nav ul li a:hover {
@@ -49,60 +46,88 @@
     .gallery {
       display: flex;
       flex-wrap: wrap;
-      gap: 1rem;
       justify-content: center;
+      gap: 1rem;
       padding: 2rem;
     }
 
-    .art-card img {
-      width: 250px;
-      height: 250px;
+    .art-image {
+      width: 380px;
+      height: 200px;
       object-fit: cover;
       border-radius: 8px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
       cursor: pointer;
       transition: transform 0.3s ease;
     }
 
-    .art-card img:hover {
+    .art-image:hover {
+      filter: brightness(70%);
       transform: scale(1.02);
     }
 
-    /* Lightbox styles */
     .lightbox {
       display: none;
       position: fixed;
-      z-index: 999;
       top: 0;
       left: 0;
       width: 100vw;
       height: 100vh;
-      background-color: rgba(0, 0, 0, 0.8);
+      background: rgba(0, 0, 0, 0.8);
       justify-content: center;
       align-items: center;
-      flex-direction: column;
+      z-index: 999;
     }
 
-    .lightbox img {
+    .lightbox-content {
+      position: relative;
       max-width: 90%;
-      max-height: 80vh;
-      border-radius: 6px;
+      max-height: 90%;
+      background: white;
+      padding: 1rem;
+      border-radius: 8px;
     }
 
-    .lightbox-close {
-      position: absolute;
-      top: 1rem;
-      right: 2rem;
-      font-size: 2rem;
-      color: #fff;
-      cursor: pointer;
+    .lightbox-content img {
+      max-width: 100%;
+      max-height: 70vh;
+      display: block;
+      margin: 0 auto;
     }
 
-    #lightbox-caption {
-      color: #eee;
+    .lightbox-description {
       margin-top: 1rem;
-      font-size: 1rem;
       text-align: center;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #888;
+    }
+
+    .more-gallery {
+      display: none;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .show-more-btn {
+      display: block;
+      margin: 2rem auto;
+      padding: 0.75rem 2rem;
+      font-size: 1rem;
+      border: none;
+      background-color: #b35825;
+      color: white;
+      border-radius: 4px;
+      cursor: pointer;
     }
 
     footer {
@@ -130,36 +155,26 @@
 
   <main>
     <section class="gallery">
-      <div class="art-card">
-        <img src="010.jpg" alt="Lanzarote" onclick="openLightbox(this)" data-caption="Lanzarote Oil Painting – 2022, 50×70cm">
-      </div>
-      <div class="art-card">
-        <img src="008.jpg" alt="Almeria" onclick="openLightbox(this)" data-caption="Almeria Oil Painting – 2022, 50×70cm">
-      </div>
-      <div class="art-card">
-        <img src="004.jpg" alt="Frida" onclick="openLightbox(this)" data-caption="Frida Oil Painting – 2022, 50×70cm">
-      </div>
-      <div class="art-card">
-        <img src="006.jpg" alt="Santander" onclick="openLightbox(this)" data-caption="Santander Oil Painting – 2022, 50×70cm">
-      </div>
-      <div class="art-card">
-        <img src="002.jpg" alt="David Bowie 1" onclick="openLightbox(this)" data-caption="David Bowie Oil Painting – 2022, 50×70cm">
-      </div>
-      <div class="art-card">
-        <img src="003.PNG" alt="David Bowie 2" onclick="openLightbox(this)" data-caption="David Bowie Oil Painting – 2022, 50×70cm">
-      </div>
-      <div class="art-card">
-        <img src="005.jpg" alt="David Bowie 3" onclick="openLightbox(this)" data-caption="David Bowie Oil Painting – 2022, 50×70cm">
-      </div>
+      <img class="art-image" src="010.jpg" alt="Artwork 010" data-desc="作品 010：温柔的湖光倒影">
+      <img class="art-image" src="008.jpg" alt="Artwork 008" data-desc="作品 008：夕阳下的人物剪影">
+      <img class="art-image" src="004.jpg" alt="Artwork 004" data-desc="作品 004：抽象色块构成">
+      <img class="art-image" src="006.jpg" alt="Artwork 006" data-desc="作品 006：街头的一瞥">
+    </section>
+
+    <button class="show-more-btn" onclick="showMore()">Show More</button>
+
+    <section class="gallery more-gallery">
+      <img class="art-image" src="003.jpg" alt="Artwork 003" data-desc="作品 003：孤独的树影">
+      <img class="art-image" src="002.jpg" alt="Artwork 002" data-desc="作品 002：静谧山谷风景">
     </section>
   </main>
 
-  <!-- Lightbox -->
+  <!-- Lightbox 弹窗 -->
   <div class="lightbox" id="lightbox">
-    <span class="lightbox-close" onclick="closeLightbox()">×</span>
     <div class="lightbox-content">
-      <img id="lightbox-img" src="" alt="Full Image">
-      <p id="lightbox-caption"></p>
+      <span class="close-btn" onclick="closeLightbox()">&times;</span>
+      <img id="lightbox-img" src="" alt="enlarged artwork">
+      <div class="lightbox-description" id="lightbox-desc"></div>
     </div>
   </div>
 
@@ -168,18 +183,26 @@
   </footer>
 
   <script>
-    function openLightbox(imgElement) {
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImg = document.getElementById('lightbox-img');
-      const caption = document.getElementById('lightbox-caption');
+    const images = document.querySelectorAll('.art-image');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightbox-img');
+    const lightboxDesc = document.getElementById('lightbox-desc');
 
-      lightbox.style.display = 'flex';
-      lightboxImg.src = imgElement.src;
-      caption.textContent = imgElement.getAttribute('data-caption');
-    }
+    images.forEach(img => {
+      img.addEventListener('click', () => {
+        lightboxImg.src = img.src;
+        lightboxDesc.textContent = img.getAttribute('data-desc') || '';
+        lightbox.style.display = 'flex';
+      });
+    });
 
     function closeLightbox() {
-      document.getElementById('lightbox').style.display = 'none';
+      lightbox.style.display = 'none';
+    }
+
+    function showMore() {
+      document.querySelector('.more-gallery').style.display = 'flex';
+      document.querySelector('.show-more-btn').style.display = 'none';
     }
   </script>
 
