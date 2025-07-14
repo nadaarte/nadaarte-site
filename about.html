@@ -10,14 +10,18 @@
     nav {
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
+      align-items: flex-end; /* ✅ 关键点：底部对齐 */
       padding: 1rem 2rem;
+      border-bottom: 1px solid #ccc;
     }
+
     nav h1 {
       font-family: 'Playfair Display', serif;
       font-weight: 700;
+      font-size: 1.8rem;
       margin: 0;
     }
+
     nav ul {
       display: flex;
       gap: 1.5rem;
@@ -25,10 +29,12 @@
       margin: 0;
       padding: 0;
     }
+
     nav ul li a {
       text-decoration: none;
       font-family: 'Playfair Display', serif;
-      color: inherit;
+      font-size: 1rem;
+      color: #000;
     }
   </style>
 </head>
