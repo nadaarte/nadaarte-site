@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Home — Nadaarte</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
-  <!-- Lightbox CSS -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
   <style>
     body {
       font-family: 'Playfair Display', serif;
@@ -26,9 +24,7 @@
       font-weight: 700;
       font-size: 2rem;
       letter-spacing: -0.05em;
-      cursor: default;
-      margin-bottom: 0.5rem;
-      text-align: left;
+      margin: 0 0 0.5rem;
     }
 
     header nav ul {
@@ -57,14 +53,11 @@
     }
 
     .intro h2 {
-      font-weight: 700;
       font-size: 1.5rem;
-      margin-bottom: 0.5rem;
       color: #444;
     }
 
     .intro p {
-      font-weight: 400;
       font-size: 0.875rem;
       color: #aaa;
     }
@@ -77,28 +70,64 @@
       padding: 1rem 2rem 4rem;
     }
 
-    .gallery a {
-      display: block;
+    .art-image {
       width: 380px;
-      height: 200px;
-      overflow: hidden;
+      height: 220px;
+      object-fit: cover;
       border-radius: 8px;
       box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
-      position: relative;
       cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-    .gallery a:hover {
-      transform: scale(1.03);
-      box-shadow: 0 6px 12px rgb(0 0 0 / 0.2);
+      transition: transform 0.3s;
     }
 
-    .gallery img.art-image {
+    .art-image:hover {
+      transform: scale(1.03);
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 999;
+      left: 0;
+      top: 0;
       width: 100%;
       height: 100%;
-      object-fit: cover;
-      display: block;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      background: #fff;
+      padding: 1rem;
       border-radius: 8px;
+      text-align: center;
+    }
+
+    .modal-content img {
+      max-width: 100%;
+      max-height: 70vh;
+      margin-bottom: 1rem;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 0.5rem;
+      right: 1rem;
+      font-size: 2rem;
+      color: #666;
+      cursor: pointer;
+    }
+
+    .modal-content p {
+      font-size: 0.95rem;
+      color: #333;
+      margin-top: 0.5rem;
     }
 
     footer {
@@ -110,6 +139,7 @@
     }
   </style>
 </head>
+
 <body>
   <header>
     <nav>
@@ -130,32 +160,49 @@
     </section>
 
     <section class="gallery">
-      <a href="010.jpg" data-lightbox="gallery" data-title="Artwork 010">
-        <img class="art-image" src="010.jpg" alt="Artwork 010" />
-      </a>
-      <a href="008.jpg" data-lightbox="gallery" data-title="Artwork 008">
-        <img class="art-image" src="008.jpg" alt="Artwork 008" />
-      </a>
-      <a href="004.jpg" data-lightbox="gallery" data-title="Artwork 004">
-        <img class="art-image" src="004.jpg" alt="Artwork 004" />
-      </a>
-      <a href="006.jpg" data-lightbox="gallery" data-title="Artwork 006">
-        <img class="art-image" src="006.jpg" alt="Artwork 006" />
-      </a>
-      <a href="003.PNG" data-lightbox="gallery" data-title="Artwork 003">
-        <img class="art-image" src="003.PNG" alt="Artwork 003" />
-      </a>
-      <a href="002.jpg" data-lightbox="gallery" data-title="Artwork 002">
-        <img class="art-image" src="002.jpg" alt="Artwork 002" />
-      </a>
+      <img class="art-image" src="010.jpg" alt="Lanzarote" data-desc="Lanzarote, Oil Painting – 2022, 70×50cm">
+      <img class="art-image" src="008.jpg" alt="Almería" data-desc="Almería, Oil Painting – 2022, 70×50cm">
+      <img class="art-image" src="004.jpg" alt="Frida" data-desc="Frida, Oil Painting – 2022, 50×70cm">
+      <img class="art-image" src="006.jpg" alt="Santander" data-desc="Santander, Oil Painting – 2022, 70×50cm">
+      <img class="art-image" src="003.jpg" alt="David Bowie" data-desc="David Bowie, Oil Painting – 2022, 50×70cm">
     </section>
   </main>
+
+  <!-- Modal for enlarged image -->
+  <div class="modal" id="imageModal">
+    <div class="modal-content">
+      <span class="modal-close" onclick="closeModal()">&times;</span>
+      <img id="modalImage" src="" alt="">
+      <p id="modalDesc"></p>
+    </div>
+  </div>
 
   <footer>
     <p>&copy; 2025 Nadaarte. All rights reserved.</p>
   </footer>
 
-  <!-- Lightbox JS -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox-plus-jquery.min.js"></script>
+  <script>
+    const modal = document.getElementById('imageModal');
+    const modalImg = document.getElementById('modalImage');
+    const modalDesc = document.getElementById('modalDesc');
+
+    document.querySelectorAll('.art-image').forEach(img => {
+      img.addEventListener('click', () => {
+        modal.style.display = 'flex';
+        modalImg.src = img.src;
+        modalDesc.textContent = img.dataset.desc;
+      });
+    });
+
+    function closeModal() {
+      modal.style.display = 'none';
+    }
+
+    window.onclick = function (event) {
+      if (event.target === modal) {
+        closeModal();
+      }
+    };
+  </script>
 </body>
 </html>
