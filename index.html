@@ -7,20 +7,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
+    body {
+      font-family: 'Playfair Display', serif;
+      margin: 0;
+      background: #fafafa;
+      color: #222;
+    }
+
     header nav {
-      display: block; /* 让h1和ul分两行 */
+      display: block;
       padding: 1rem 2rem;
       background: #fff;
       box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
     }
+
     header nav h1 {
       font-weight: 700;
       font-size: 2rem;
       letter-spacing: -0.05em;
       cursor: default;
-      margin-bottom: 0.5rem; /* 增加间距 */
+      margin-bottom: 0.5rem;
       text-align: left;
     }
+
     header nav ul {
       list-style: none;
       display: flex;
@@ -28,6 +37,7 @@
       margin: 0;
       padding: 0;
     }
+
     header nav ul li a {
       text-decoration: none;
       color: #222;
@@ -35,44 +45,44 @@
       font-size: 1rem;
       transition: color 0.3s ease;
     }
+
     header nav ul li a:hover {
       color: #b35825;
     }
 
-    /* 介绍部分 */
     .intro {
       text-align: center;
       padding: 4rem 2rem 2rem;
     }
+
     .intro h2 {
       font-weight: 700;
-      font-size: 1.5rem; /* 调小字体 */
+      font-size: 1.5rem;
+      color: #444;
       margin-bottom: 0.5rem;
-      color: #444; /* 深灰色 */
-    }
-    .intro p {
-      font-weight: 400;
-      font-size: 1rem; /* 更小 */
-      color: #999; /* 更浅 */
     }
 
-    /* 画廊 */
+    .intro p {
+      font-size: 0.875rem;
+      color: #aaa;
+    }
+
     .gallery {
       display: flex;
-      gap: 1rem;
       flex-wrap: wrap;
       justify-content: center;
-      padding: 1rem 2rem 4rem;
-    }
-    .art-placeholder {
-      flex: 1 1 200px;
-      height: 200px;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
-      object-fit: cover;
+      gap: 1rem;
+      padding: 2rem;
     }
 
-    /* 页脚 */
+    .art-image {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
+    }
+
     footer {
       text-align: center;
       padding: 2rem;
@@ -102,12 +112,13 @@
     </section>
 
     <section class="gallery">
-      <img src="images/1675427A-43B0-4485-9168-877A55B596AA2023-12-31_15-00-40_000.jpeg" alt="Artwork 1" class="art-placeholder" />
-      <img src="images/2171A7C8-FBF0-43CB-9132-07B8D218F47E2023-12-31_15-01-57_000.jpeg" alt="Artwork 2" class="art-placeholder" />
-      <img src="images/D1829B44-BFC1-42C0-AFF2-346FB67779542023-12-31_15-01-14_000.jpeg" alt="Artwork 3" class="art-placeholder" />
-      <img src="images/48C48844-30BF-48B6-8BA9-BD4B22E5718F2023-12-31_15-00-05_000.jpeg" alt="Artwork 4" class="art-placeholder" />
-      <img src="images/4E731EAB-E62B-425C-87C2-9C5DAE28B7522023-12-31_15-00-58_000.png" alt="Artwork 5" class="art-placeholder" />
-      <img src="images/C52F88A4-940A-4F34-94B7-313A9460169F2023-12-31_15-06-37_000.jpeg" alt="Artwork 6" class="art-placeholder" />
+      <img class="art-image" src="images/001.jpg" alt="Artwork 1" />
+      <img class="art-image" src="images/002.jpg" alt="Artwork 2" />
+      <img class="art-image" src="images/003.jpg" alt="Artwork 3" />
+      <img class="art-image" src="images/004.jpg" alt="Artwork 4" />
+      <img class="art-image" src="images/005.jpg" alt="Artwork 5" />
+      <img class="art-image" src="images/006.jpg" alt="Artwork 6" />
+      <img class="art-image" src="images/007.jpg" alt="Artwork 7" />
     </section>
   </main>
 
