@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Home — Nadaarte</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
   <style>
     body {
       font-family: 'Playfair Display', serif;
@@ -12,20 +13,23 @@
       background: #fafafa;
       color: #222;
     }
+
     header nav {
-      display: block; /* 让h1和ul分两行 */
+      display: block;
       padding: 1rem 2rem;
       background: #fff;
       box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
     }
+
     header nav h1 {
       font-weight: 700;
       font-size: 2rem;
       letter-spacing: -0.05em;
       cursor: default;
-      margin-bottom: 0.5rem; /* 增加间距 */
+      margin-bottom: 0.5rem;
       text-align: left;
     }
+
     header nav ul {
       list-style: none;
       display: flex;
@@ -33,6 +37,7 @@
       margin: 0;
       padding: 0;
     }
+
     header nav ul li a {
       text-decoration: none;
       color: #222;
@@ -40,31 +45,37 @@
       font-size: 1rem;
       transition: color 0.3s ease;
     }
+
     header nav ul li a:hover {
       color: #b35825;
     }
-    main .intro {
+
+    .intro {
       text-align: center;
       padding: 4rem 2rem 2rem;
     }
-    main .intro h2 {
+
+    .intro h2 {
       font-weight: 700;
-      font-size: 1.5rem; /* 调小字体 */
+      font-size: 1.5rem; /* 修改后的字体大小 */
       margin-bottom: 0.5rem;
-      color: #555;
+      color: #444; /* 灰色 */
     }
-    main .intro p {
+
+    .intro p {
       font-weight: 400;
-      font-size: 1rem; /* 再小一点 */
-      color: #999;
+      font-size: 0.875rem;
+      color: #aaa; /* 更浅的灰色 */
     }
+
     .gallery {
       display: flex;
+      gap: 1rem;
       flex-wrap: wrap;
       justify-content: center;
-      gap: 1rem;
       padding: 1rem 2rem 4rem;
     }
+
     .art-image {
       width: 380px;
       height: 200px;
@@ -72,6 +83,7 @@
       border-radius: 8px;
       box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
     }
+
     footer {
       text-align: center;
       padding: 2rem;
@@ -101,15 +113,13 @@
     </section>
 
     <section class="gallery">
-      <!-- 先放 001~003 -->
-      <img src="images/001.jpg" alt="Artwork 1" class="art-image" />
-      <img src="images/002.jpg" alt="Artwork 2" class="art-image" />
-      <img src="images/003.jpg" alt="Artwork 3" class="art-image" />
-      <!-- 再放 004~007 -->
-      <img src="images/004.jpg" alt="Artwork 4" class="art-image" />
-      <img src="images/005.jpg" alt="Artwork 5" class="art-image" />
-      <img src="images/006.jpg" alt="Artwork 6" class="art-image" />
-      <img src="images/007.jpg" alt="Artwork 7" class="art-image" />
+      <img class="art-image" src="001.jpg" alt="Artwork 1">
+      <img class="art-image" src="002.jpg" alt="Artwork 2">
+      <img class="art-image" src="003.PNG" alt="Artwork 3">
+      <img class="art-image" src="004.jpg" alt="Artwork 4">
+      <img class="art-image" src="005.jpg" alt="Artwork 5">
+      <img class="art-image" src="006.jpg" alt="Artwork 6">
+      <img class="art-image" src="007.jpg" alt="Artwork 7">
     </section>
   </main>
 
