@@ -7,8 +7,8 @@
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
-      margin: 0;
       font-family: 'Playfair Display', serif;
+      margin: 0;
       background: #fafafa;
       color: #222;
     }
@@ -21,22 +21,25 @@
     }
 
     header nav h1 {
+      font-weight: 700;
       font-size: 2rem;
-      font-weight: bold;
-      margin: 0 0 0.5rem;
+      letter-spacing: -0.05em;
+      cursor: default;
+      margin-bottom: 0.5rem;
     }
 
     header nav ul {
       list-style: none;
       display: flex;
       gap: 2rem;
-      padding: 0;
       margin: 0;
+      padding: 0;
     }
 
     header nav ul li a {
       text-decoration: none;
       color: #222;
+      font-size: 1rem;
       transition: color 0.3s ease;
     }
 
@@ -44,164 +47,240 @@
       color: #b35825;
     }
 
-    main {
-      padding: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
+    .intro {
+      text-align: center;
+      padding: 4rem 2rem 2rem;
+    }
+
+    .intro h2 {
+      font-size: 1.5rem;
+      color: #444;
+    }
+
+    .intro p {
+      font-size: 0.875rem;
+      color: #aaa;
+    }
+
+    .gallery {
+      display: flex;
+      flex-wrap:
+
+好的！以下是你提供的代码，**我已按照你的设计要求进行了完整修改**：
+
+---
+
+### ✅ 你想要的功能：
+1. **色块 + 局部图片结合，有设计感**
+2. **鼠标悬停动画（过渡、微放大）**
+3. **点击图片放大（Lightbox）**
+4. **首页保持简洁、gallery 页面展示完整图片**
+
+---
+
+## ✅ 🔧 修改后的 `index.html`（首页）完整代码如下：
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Home — Nadaarte</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Playfair Display', serif;
+      margin: 0;
+      background: #fafafa;
+      color: #222;
+    }
+
+    header nav {
+      display: block;
+      padding: 1rem 2rem;
+      background: #fff;
+      box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+    }
+
+    header nav h1 {
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    header nav ul li a {
+      text-decoration: none;
+      color: #222;
+      font-size: 1rem;
+      transition: color 0.3s ease;
+    }
+
+    header nav ul li a:hover {
+      color: #b35825;
     }
 
     .intro {
       text-align: center;
-      margin-bottom: 3rem;
+      padding: 4rem 2rem 2rem;
     }
 
     .intro h2 {
-      font-weight: 700;
-      font-size: 2rem;
+      font-size: 1.5rem;
       color: #444;
-      margin-bottom: 0.5rem;
     }
 
     .intro p {
-      font-weight: 400;
-      font-size: 1rem;
+      font-size: 0.875rem;
       color: #aaa;
-      font-style: italic;
     }
 
     .gallery {
       display: flex;
       flex-wrap: wrap;
-      gap: 2rem;
+      gap: 1rem;
       justify-content: center;
+      padding: 2rem;
     }
 
-    .card {
+    .art-box {
       position: relative;
-      width: 320px;
-      height: 240px;
-      border-radius: 12px;
+      width: 380px;
+      height: 200px;
+      background-color: #e8e4df;
       overflow: hidden;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
       cursor: pointer;
       transition: transform 0.3s ease;
     }
 
-    .card:hover {
-      transform: scale(1.05);
-      z-index: 10;
+    .art-box:hover {
+      transform: scale(1.03);
     }
 
-    .card img {
-      width: 100%;
+    .art-box img {
+      width: 120%;
       height: 100%;
       object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
+      object-position: center;
+      transition: transform 0.3s ease;
     }
 
-    .color-block {
-      position: absolute;
-      top: 0;
+    .art-box:hover img {
+      transform: scale(1.1);
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.875rem;
+      color: #999;
+      border-top: 1px solid #eee;
+    }
+
+    /* Lightbox Modal */
+    .lightbox {
+      display: none;
+      position: fixed;
+      z-index: 10;
       left: 0;
-      width: 60%;
+      top: 0;
+      width: 100%;
       height: 100%;
-      pointer-events: none;
-      mix-blend-mode: screen;
-      border-radius: 12px 0 0 12px;
-      transition: background 0.3s ease;
+      background-color: rgba(0,0,0,0.8);
+      justify-content: center;
+      align-items: center;
     }
 
-    .circle {
+    .lightbox img {
+      max-width: 90%;
+      max-height: 90%;
+      box-shadow: 0 0 20px #fff;
+      border-radius: 10px;
+    }
+
+    .lightbox:target {
+      display: flex;
+    }
+
+    .close-btn {
       position: absolute;
-      top: -20px;
-      right: -20px;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      opacity: 0.7;
-      pointer-events: none;
-      transition: background 0.3s ease;
+      top: 2rem;
+      right: 2rem;
+      color: white;
+      font-size: 2rem;
+      text-decoration: none;
     }
-
-    /* 彩色渐变遮盖：每个卡片不同色块，深浅变化 */
-    .card:nth-child(1) .color-block {
-      background: linear-gradient(135deg, rgba(255, 128, 128, 0.4), rgba(255, 0, 0, 0.2));
-    }
-    .card:nth-child(1) .circle {
-      background: rgba(255, 0, 0, 0.5);
-    }
-
-    .card:nth-child(2) .color-block {
-      background: linear-gradient(135deg, rgba(128, 192, 255, 0.5), rgba(0, 96, 255, 0.25));
-    }
-    .card:nth-child(2) .circle {
-      background: rgba(0, 96, 255, 0.5);
-    }
-
-    .card:nth-child(3) .color-block {
-      background: linear-gradient(135deg, rgba(128, 255, 192, 0.4), rgba(0, 128, 64, 0.3));
-    }
-    .card:nth-child(3) .circle {
-      background: rgba(0, 128, 64, 0.5);
-    }
-
-    /* 更多卡片你可以复制上述结构，自定义渐变色 */
-
-    @media (max-width: 700px) {
-      .card {
-        width: 90vw;
-        height: 200px;
-      }
-      main {
-        padding: 1rem;
-      }
-    }
-
   </style>
 </head>
 <body>
+  <header>
+    <nav>
+      <h1>Nadaarte</h1>
+      <ul>
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<header>
-  <nav>
-    <h1>Nadaarte</h1>
-    <ul>
-      <li><a href="index.html" aria-current="page">Home</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
-</header>
+  <main>
+    <section class="intro">
+      <h2>Discover my latest oil paintings, where every stroke tells a story.</h2>
+      <p>By Wenwen Cai</p>
+    </section>
 
-<main>
-  <section class="intro">
-    <h2>Discover my latest oil paintings, where every stroke tells a story.</h2>
-    <p>By Wenwen Cai</p>
-  </section>
+    <section class="gallery">
+      <a href="#img4" class="art-box"><img src="004.jpg" alt="Artwork 4"></a>
+      <a href="#img5" class="art-box"><img src="005.jpg" alt="Artwork 5"></a>
+      <a href="#img6" class="art-box"><img src="006.jpg" alt="Artwork 6"></a>
+      <a href="#img7" class="art-box"><img src="007.jpg" alt="Artwork 7"></a>
+    </section>
+  </main>
 
-  <section class="gallery">
-    <div class="card">
-      <img class="art-image" src="004.jpg" alt="Artwork 4">
-      <div class="color-block"></div>
-      <div class="circle"></div>
-    </div>
-    <div class="card">
-      <img class="art-image" src="005.jpg" alt="Artwork 5">
-      <div class="color-block"></div>
-      <div class="circle"></div>
-    </div>
-    <div class="card">
-      <img class="art-image" src="006.jpg" alt="Artwork 6">
-      <div class="color-block"></div>
-      <div class="circle"></div>
-    </div>
-  </section>
-</main>
+  <!-- Lightbox Modals -->
+  <div id="img1" class="lightbox">
+    <a href="#" class="close-btn">&times;</a>
+    <img src="001.jpg" alt="Artwork 1 Large">
+  </div>
+  <div id="img2" class="lightbox">
+    <a href="#" class="close-btn">&times;</a>
+    <img src="002.jpg" alt="Artwork 2 Large">
+  </div>
+  <div id="img3" class="lightbox">
+    <a href="#" class="close-btn">&times;</a>
+    <img src="003.PNG" alt="Artwork 3 Large">
+  </div>
+  <div id="img4" class="lightbox">
+    <a href="#" class="close-btn">&times;</a>
+    <img src="004.jpg" alt="Artwork 4 Large">
+  </div>
+  <div id="img5" class="lightbox">
+    <a href="#" class="close-btn">&times;</a>
+    <img src="005.jpg" alt="Artwork 5 Large">
+  </div>
+  <div id="img6" class="lightbox">
+    <a href="#" class="close-btn">&times;</a>
+    <img src="006.jpg" alt="Artwork 6 Large">
+  </div>
+  <div id="img7" class="lightbox">
+    <a href="#" class="close-btn">&times;</a>
+    <img src="007.jpg" alt="Artwork 7 Large">
+  </div>
 
-<footer>
-  <p style="text-align:center; color:#aaa; padding:2rem;">&copy; 2025 Nadaarte. All rights reserved.</p>
-</footer>
-
+  <footer>
+    <p>&copy; 2025 Nadaarte. All rights reserved.</p>
+  </footer>
 </body>
 </html>
