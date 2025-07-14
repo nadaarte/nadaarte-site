@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Home — Nadaarte</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
   <style>
     body {
       font-family: 'Playfair Display', serif;
@@ -26,6 +27,7 @@
       letter-spacing: -0.05em;
       cursor: default;
       margin-bottom: 0.5rem;
+      text-align: left;
     }
 
     header nav ul {
@@ -39,6 +41,7 @@
     header nav ul li a {
       text-decoration: none;
       color: #222;
+      font-weight: 400;
       font-size: 1rem;
       transition: color 0.3s ease;
     }
@@ -53,130 +56,32 @@
     }
 
     .intro h2 {
-      font-size: 1.5rem;
-      color: #444;
-    }
-
-    .intro p {
-      font-size: 0.875rem;
-      color: #aaa;
-    }
-
-    .gallery {
-      display: flex;
-      flex-wrap:
-
-好的！以下是你提供的代码，**我已按照你的设计要求进行了完整修改**：
-
----
-
-### ✅ 你想要的功能：
-1. **色块 + 局部图片结合，有设计感**
-2. **鼠标悬停动画（过渡、微放大）**
-3. **点击图片放大（Lightbox）**
-4. **首页保持简洁、gallery 页面展示完整图片**
-
----
-
-## ✅ 🔧 修改后的 `index.html`（首页）完整代码如下：
-
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home — Nadaarte</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
-  <style>
-    body {
-      font-family: 'Playfair Display', serif;
-      margin: 0;
-      background: #fafafa;
-      color: #222;
-    }
-
-    header nav {
-      display: block;
-      padding: 1rem 2rem;
-      background: #fff;
-      box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
-    }
-
-    header nav h1 {
       font-weight: 700;
-      font-size: 2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    header nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      margin: 0;
-      padding: 0;
-    }
-
-    header nav ul li a {
-      text-decoration: none;
-      color: #222;
-      font-size: 1rem;
-      transition: color 0.3s ease;
-    }
-
-    header nav ul li a:hover {
-      color: #b35825;
-    }
-
-    .intro {
-      text-align: center;
-      padding: 4rem 2rem 2rem;
-    }
-
-    .intro h2 {
       font-size: 1.5rem;
+      margin-bottom: 0.5rem;
       color: #444;
     }
 
     .intro p {
+      font-weight: 400;
       font-size: 0.875rem;
       color: #aaa;
     }
 
     .gallery {
       display: flex;
-      flex-wrap: wrap;
       gap: 1rem;
+      flex-wrap: wrap;
       justify-content: center;
-      padding: 2rem;
+      padding: 1rem 2rem 4rem;
     }
 
-    .art-box {
-      position: relative;
+    .art-image {
       width: 380px;
       height: 200px;
-      background-color: #e8e4df;
-      overflow: hidden;
-      border-radius: 10px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .art-box:hover {
-      transform: scale(1.03);
-    }
-
-    .art-box img {
-      width: 120%;
-      height: 100%;
       object-fit: cover;
-      object-position: center;
-      transition: transform 0.3s ease;
-    }
-
-    .art-box:hover img {
-      transform: scale(1.1);
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
     }
 
     footer {
@@ -185,40 +90,6 @@
       font-size: 0.875rem;
       color: #999;
       border-top: 1px solid #eee;
-    }
-
-    /* Lightbox Modal */
-    .lightbox {
-      display: none;
-      position: fixed;
-      z-index: 10;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.8);
-      justify-content: center;
-      align-items: center;
-    }
-
-    .lightbox img {
-      max-width: 90%;
-      max-height: 90%;
-      box-shadow: 0 0 20px #fff;
-      border-radius: 10px;
-    }
-
-    .lightbox:target {
-      display: flex;
-    }
-
-    .close-btn {
-      position: absolute;
-      top: 2rem;
-      right: 2rem;
-      color: white;
-      font-size: 2rem;
-      text-decoration: none;
     }
   </style>
 </head>
@@ -242,42 +113,12 @@
     </section>
 
     <section class="gallery">
-      <a href="#img4" class="art-box"><img src="004.jpg" alt="Artwork 4"></a>
-      <a href="#img5" class="art-box"><img src="005.jpg" alt="Artwork 5"></a>
-      <a href="#img6" class="art-box"><img src="006.jpg" alt="Artwork 6"></a>
-      <a href="#img7" class="art-box"><img src="007.jpg" alt="Artwork 7"></a>
+      <img class="art-image" src="004.jpg" alt="Artwork 4">
+      <img class="art-image" src="005.jpg" alt="Artwork 5">
+      <img class="art-image" src="006.jpg" alt="Artwork 6">
+      <img class="art-image" src="007.jpg" alt="Artwork 7">
     </section>
   </main>
-
-  <!-- Lightbox Modals -->
-  <div id="img1" class="lightbox">
-    <a href="#" class="close-btn">&times;</a>
-    <img src="001.jpg" alt="Artwork 1 Large">
-  </div>
-  <div id="img2" class="lightbox">
-    <a href="#" class="close-btn">&times;</a>
-    <img src="002.jpg" alt="Artwork 2 Large">
-  </div>
-  <div id="img3" class="lightbox">
-    <a href="#" class="close-btn">&times;</a>
-    <img src="003.PNG" alt="Artwork 3 Large">
-  </div>
-  <div id="img4" class="lightbox">
-    <a href="#" class="close-btn">&times;</a>
-    <img src="004.jpg" alt="Artwork 4 Large">
-  </div>
-  <div id="img5" class="lightbox">
-    <a href="#" class="close-btn">&times;</a>
-    <img src="005.jpg" alt="Artwork 5 Large">
-  </div>
-  <div id="img6" class="lightbox">
-    <a href="#" class="close-btn">&times;</a>
-    <img src="006.jpg" alt="Artwork 6 Large">
-  </div>
-  <div id="img7" class="lightbox">
-    <a href="#" class="close-btn">&times;</a>
-    <img src="007.jpg" alt="Artwork 7 Large">
-  </div>
 
   <footer>
     <p>&copy; 2025 Nadaarte. All rights reserved.</p>
