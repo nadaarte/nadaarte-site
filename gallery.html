@@ -13,6 +13,7 @@
       color: #222;
     }
 
+    /* ✅ 首页风格的 header 样式 */
     header nav {
       display: block;
       padding: 1rem 2rem;
@@ -21,22 +22,28 @@
     }
 
     header nav h1 {
+      font-weight: 700;
       font-size: 2rem;
-      margin: 0 0 0.5rem;
+      letter-spacing: -0.05em;
+      cursor: default;
+      margin-bottom: 0.5rem;
+      text-align: left;
     }
 
     header nav ul {
       list-style: none;
       display: flex;
       gap: 2rem;
-      padding: 0;
       margin: 0;
+      padding: 0;
     }
 
     header nav ul li a {
       text-decoration: none;
       color: #222;
+      font-weight: 400;
       font-size: 1rem;
+      transition: color 0.3s ease;
     }
 
     header nav ul li a:hover {
@@ -141,6 +148,7 @@
 </head>
 <body>
 
+  <!-- ✅ 使用首页样式的导航栏 -->
   <header>
     <nav>
       <h1>Nadaarte</h1>
@@ -168,7 +176,7 @@
     </section>
   </main>
 
-  <!-- Lightbox 弹窗 -->
+  <!-- Lightbox -->
   <div class="lightbox" id="lightbox">
     <div class="lightbox-content">
       <span class="close-btn" onclick="closeLightbox()">&times;</span>
