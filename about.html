@@ -3,102 +3,54 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>About — Nadaarte</title>
-  <link href="https://fonts.googleapis.com/css2?family=IvyPresto+Display&family=Poppins&display=swap" rel="stylesheet" />
+  <title>Contact — Nadaarte</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
   <style>
-    /* Nadaarte 标题字体 */
-    .logo {
-      font-family: 'IvyPresto Display', serif;
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-      font-weight: normal;
-      text-align: center;
-    }
-
-    /* 导航菜单和正文字体 */
-    body {
-      font-family: 'Poppins', sans-serif;
-      margin: 0;
-      padding: 0 1rem;
-      color: #222;
-      background-color: #fff;
-    }
-
-    header nav {
-      margin-bottom: 2rem;
-      padding-top: 1.5rem;
-      text-align: center;
-    }
-
-    .nav-links {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    nav {
       display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+    }
+    nav h1 {
+      margin: 0;
+      text-align: left;
+      padding-left: 1rem; /* 可调节边距 */
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+    }
+    nav ul {
+      display: flex;
+      gap: 1.5rem;
+      padding: 0;
+      margin: 0 auto; /* 让导航居中 */
+      list-style: none;
       justify-content: center;
-      gap: 2.5rem;
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-
-    .nav-links li a {
-      text-decoration: none;
-      color: #222;
-      transition: color 0.3s ease;
-    }
-
-    .nav-links li a:hover,
-    .nav-links li a[aria-current="page"] {
-      color: #555;
-    }
-
-    main {
-      max-width: 700px;
-      margin: 0 auto;
-    }
-
-    main section.about-content h2 {
-      font-size: 2rem;
-      margin-bottom: 1rem;
-    }
-
-    main section.about-content p {
-      line-height: 1.6;
-      margin-bottom: 1.25rem;
-      font-size: 1.1rem;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1.5rem 0;
-      font-size: 0.9rem;
-      color: #888;
-      border-top: 1px solid #ddd;
-      margin-top: 3rem;
+      max-width: 600px; /* 限制宽度方便居中 */
     }
   </style>
 </head>
 <body>
   <header>
     <nav>
-      <h1 class="logo">Nadaarte</h1>
-      <ul class="nav-links">
+      <h1>Nadaarte</h1>
+      <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="about.html" aria-current="page">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="about-content">
-      <h2>About Wenwen Cai</h2>
-      <p>Wenwen Cai is a contemporary oil painter residing in The Hague, Netherlands, and Valencia, Spain. She focuses primarily on landscapes and portraits, using rich colors to express her affection for the surrounding world and her intense emotions.</p>
-
-      <p>Wenwen Cai woont in Den Haag, Nederland, en Valencia, Spanje. Zij richt zich vooral op landschappen en portretten, waarbij ze rijke kleuren gebruikt om haar liefde voor de omgeving en haar sterke emoties uit te drukken.</p>
-
-      <p>Wenwen Cai reside en La Haya, Países Bajos, y Valencia, España. Se centra principalmente en paisajes y retratos, utilizando colores ricos para expresar su cariño por el mundo que la rodea y sus intensas emociones.</p>
+    <section class="contact-content">
+      <h2>Contact</h2>
+      <p>You can reach Wenwen Cai at:</p>
+      <ul>
+        <li>Email: <a href="mailto:douwenwen@yahoo.com">douwenwen@yahoo.com</a></li>
+        <li>Based in The Hague, Netherlands & Valencia, Spain</li>
+      </ul>
     </section>
   </main>
 
