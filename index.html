@@ -46,17 +46,17 @@
     }
     .intro h2 {
       font-weight: 700;
-      font-size: 1.5rem;
+      font-size: 1.5rem; /* 调小字体 */
       margin-bottom: 0.5rem;
-      color: #555; /* 灰色 */
+      color: #444; /* 深灰色 */
     }
     .intro p {
       font-weight: 400;
-      font-size: 1rem; /* 调小字体 */
-      color: #888;     /* 调浅颜色 */
+      font-size: 1rem; /* 更小 */
+      color: #999; /* 更浅 */
     }
 
-    /* 画廊色块占位 */
+    /* 画廊 */
     .gallery {
       display: flex;
       gap: 1rem;
@@ -69,14 +69,8 @@
       height: 200px;
       border-radius: 8px;
       box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
+      object-fit: cover;
     }
-
-    /* 各色块 */
-    .red { background-color: #c94c4c; }
-    .blue { background-color: #4c82c9; }
-    .green { background-color: #4cc97b; }
-    .beige { background-color: #e6d1b3; }
-    .orange { background-color: #e6a14c; }
 
     /* 页脚 */
     footer {
@@ -108,11 +102,12 @@
     </section>
 
     <section class="gallery">
-      <div class="art-placeholder red"></div>
-      <div class="art-placeholder blue"></div>
-      <div class="art-placeholder green"></div>
-      <div class="art-placeholder beige"></div>
-      <div class="art-placeholder orange"></div>
+      <img src="images/1675427A-43B0-4485-9168-877A55B596AA2023-12-31_15-00-40_000.jpeg" alt="Artwork 1" class="art-placeholder" />
+      <img src="images/2171A7C8-FBF0-43CB-9132-07B8D218F47E2023-12-31_15-01-57_000.jpeg" alt="Artwork 2" class="art-placeholder" />
+      <img src="images/D1829B44-BFC1-42C0-AFF2-346FB67779542023-12-31_15-01-14_000.jpeg" alt="Artwork 3" class="art-placeholder" />
+      <img src="images/48C48844-30BF-48B6-8BA9-BD4B22E5718F2023-12-31_15-00-05_000.jpeg" alt="Artwork 4" class="art-placeholder" />
+      <img src="images/4E731EAB-E62B-425C-87C2-9C5DAE28B7522023-12-31_15-00-58_000.png" alt="Artwork 5" class="art-placeholder" />
+      <img src="images/C52F88A4-940A-4F34-94B7-313A9460169F2023-12-31_15-06-37_000.jpeg" alt="Artwork 6" class="art-placeholder" />
     </section>
   </main>
 
