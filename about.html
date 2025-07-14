@@ -4,11 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About — Nadaarte</title>
-  <link href="https://fonts.googleapis.com/css2?family=IvyPresto+Display&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=IvyPresto+Display&family=Poppins&display=swap" rel="stylesheet" />
   <style>
-    body {
+    /* Nadaarte 标题字体 */
+    .logo {
       font-family: 'IvyPresto Display', serif;
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      font-weight: normal;
+      text-align: center;
+    }
+
+    /* 导航菜单和正文字体 */
+    body {
+      font-family: 'Poppins', sans-serif;
       margin: 0;
       padding: 0 1rem;
       color: #222;
@@ -16,37 +25,30 @@
     }
 
     header nav {
-      text-align: center;
       margin-bottom: 2rem;
       padding-top: 1.5rem;
+      text-align: center;
     }
 
-    nav .logo {
-      font-family: 'IvyPresto Display', serif;
-      font-size: 3rem;
-      margin-bottom: 0.5rem;
-      font-weight: normal;
-    }
-
-    nav .nav-links {
+    .nav-links {
       list-style: none;
       padding: 0;
       margin: 0;
       display: flex;
       justify-content: center;
       gap: 2.5rem;
-      font-size: 1.1rem;
       font-weight: 600;
+      font-size: 1.1rem;
     }
 
-    nav .nav-links li a {
+    .nav-links li a {
       text-decoration: none;
       color: #222;
       transition: color 0.3s ease;
     }
 
-    nav .nav-links li a:hover,
-    nav .nav-links li a[aria-current="page"] {
+    .nav-links li a:hover,
+    .nav-links li a[aria-current="page"] {
       color: #555;
     }
 
