@@ -3,30 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact — Nadaarte</title>
+  <title>About — Nadaarte</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <style>
     nav {
       display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
+      justify-content: space-between;
+      align-items: flex-end;
+      padding: 1rem 2rem;
     }
     nav h1 {
-      margin: 0;
-      text-align: left;
-      padding-left: 1rem; /* 可调节边距 */
-      font-weight: 700;
       font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      margin: 0;
     }
     nav ul {
       display: flex;
       gap: 1.5rem;
-      padding: 0;
-      margin: 0 auto; /* 让导航居中 */
       list-style: none;
-      justify-content: center;
-      max-width: 600px; /* 限制宽度方便居中 */
+      margin: 0;
+      padding: 0;
+    }
+    nav ul li a {
+      text-decoration: none;
+      font-family: 'Playfair Display', serif;
+      color: inherit;
     }
   </style>
 </head>
@@ -37,20 +39,20 @@
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html" aria-current="page">Contact</a></li>
+        <li><a href="about.html" aria-current="page">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="contact-content">
-      <h2>Contact</h2>
-      <p>You can reach Wenwen Cai at:</p>
-      <ul>
-        <li>Email: <a href="mailto:douwenwen@yahoo.com">douwenwen@yahoo.com</a></li>
-        <li>Based in The Hague, Netherlands & Valencia, Spain</li>
-      </ul>
+    <section class="about-content">
+      <h2>About Wenwen Cai</h2>
+      <p>Wenwen Cai is a contemporary oil painter residing in The Hague, Netherlands, and Valencia, Spain. She focuses primarily on landscapes and portraits, using rich colors to express her affection for the surrounding world and her intense emotions.</p>
+
+      <p>Wenwen Cai woont in Den Haag, Nederland, en Valencia, Spanje. Zij richt zich vooral op landschappen en portretten, waarbij ze rijke kleuren gebruikt om haar liefde voor de omgeving en haar sterke emoties uit te drukken.</p>
+
+      <p>Wenwen Cai reside en La Haya, Países Bajos, y Valencia, España. Se centra principalmente en paisajes y retratos, utilizando colores ricos para expresar su cariño por el mundo que la rodea y sus intensas emociones.</p>
     </section>
   </main>
 
