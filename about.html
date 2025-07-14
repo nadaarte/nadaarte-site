@@ -4,14 +4,83 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>About — Nadaarte</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IvyPresto+Display&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
+  <style>
+    body {
+      font-family: 'IvyPresto Display', serif;
+      margin: 0;
+      padding: 0 1rem;
+      color: #222;
+      background-color: #fff;
+    }
+
+    header nav {
+      text-align: center;
+      margin-bottom: 2rem;
+      padding-top: 1.5rem;
+    }
+
+    nav .logo {
+      font-family: 'IvyPresto Display', serif;
+      font-size: 3rem;
+      margin-bottom: 0.5rem;
+      font-weight: normal;
+    }
+
+    nav .nav-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      gap: 2.5rem;
+      font-size: 1.1rem;
+      font-weight: 600;
+    }
+
+    nav .nav-links li a {
+      text-decoration: none;
+      color: #222;
+      transition: color 0.3s ease;
+    }
+
+    nav .nav-links li a:hover,
+    nav .nav-links li a[aria-current="page"] {
+      color: #555;
+    }
+
+    main {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    main section.about-content h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    main section.about-content p {
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+      font-size: 1.1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 0;
+      font-size: 0.9rem;
+      color: #888;
+      border-top: 1px solid #ddd;
+      margin-top: 3rem;
+    }
+  </style>
 </head>
 <body>
   <header>
     <nav>
-      <h1>Nadaarte</h1>
-      <ul>
+      <h1 class="logo">Nadaarte</h1>
+      <ul class="nav-links">
         <li><a href="index.html">Home</a></li>
         <li><a href="gallery.html">Gallery</a></li>
         <li><a href="about.html" aria-current="page">About</a></li>
