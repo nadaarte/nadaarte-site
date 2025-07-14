@@ -12,12 +12,14 @@
       background: #fafafa;
       color: #222;
     }
+
     header nav {
       display: block;
       padding: 1rem 2rem;
       background: #fff;
       box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
     }
+
     header nav h1 {
       font-weight: 700;
       font-size: 2rem;
@@ -26,6 +28,7 @@
       margin-bottom: 0.5rem;
       text-align: left;
     }
+
     header nav ul {
       list-style: none;
       display: flex;
@@ -33,6 +36,7 @@
       margin: 0;
       padding: 0;
     }
+
     header nav ul li a {
       text-decoration: none;
       color: #222;
@@ -40,24 +44,29 @@
       font-size: 1rem;
       transition: color 0.3s ease;
     }
+
     header nav ul li a:hover {
       color: #b35825;
     }
+
     .intro {
       text-align: center;
       padding: 4rem 2rem 2rem;
     }
+
     .intro h2 {
       font-weight: 700;
       font-size: 1.5rem;
       margin-bottom: 0.5rem;
       color: #444;
     }
+
     .intro p {
       font-weight: 400;
       font-size: 0.875rem;
       color: #aaa;
     }
+
     .gallery {
       display: flex;
       gap: 1rem;
@@ -65,6 +74,7 @@
       justify-content: center;
       padding: 1rem 2rem 4rem;
     }
+
     .art-image {
       width: 380px;
       height: 200px;
@@ -74,10 +84,11 @@
       cursor: pointer;
       transition: transform 0.3s ease;
     }
+
     .art-image:hover {
       transform: scale(1.03);
     }
-    /* Lightbox styles */
+
     .lightbox {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -89,15 +100,18 @@
       flex-direction: column;
       padding: 1rem;
     }
+
     .lightbox.active {
       display: flex;
     }
+
     .lightbox img {
       max-width: 90vw;
       max-height: 70vh;
       border-radius: 8px;
       box-shadow: 0 6px 12px rgba(0,0,0,0.5);
     }
+
     .lightbox .description {
       margin-top: 1rem;
       color: #fff;
@@ -107,6 +121,7 @@
       font-weight: 600;
       font-family: 'Playfair Display', serif;
     }
+
     .lightbox .close-btn {
       position: absolute;
       top: 1rem;
@@ -122,6 +137,15 @@
       height: 36px;
       line-height: 36px;
       text-align: center;
+    }
+
+    /* ✅ 新增 footer 样式 */
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.875rem;
+      color: #999;
+      border-top: 1px solid #eee;
     }
   </style>
 </head>
@@ -214,7 +238,6 @@
       lightboxDescription.textContent = '';
     });
 
-    // Close lightbox on outside click
     lightbox.addEventListener('click', (e) => {
       if(e.target === lightbox) {
         lightbox.classList.remove('active');
