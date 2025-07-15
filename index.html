@@ -11,33 +11,35 @@
       margin: 0;
       background: #fafafa;
       color: #222;
-      overflow-x: hidden;
     }
 
-    header nav {
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.95);
+      z-index: 100;
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
-      background: rgba(255, 255, 255, 0.9);
-      box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
-      position: relative;
-      z-index: 10;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     #logo {
       font-weight: 700;
       font-size: 2rem;
       letter-spacing: -0.05em;
-      cursor: pointer;
-      margin: 0;
       display: flex;
       gap: 0.05em;
+      cursor: default;
+      color: #000;
+      user-select: none;
     }
 
     #logo span {
-      transition: opacity 0.3s ease;
-      display: inline-block;
+      transition: opacity 0.3s;
+      cursor: pointer;
     }
 
     nav ul {
@@ -62,7 +64,7 @@
 
     .intro {
       text-align: center;
-      padding: 4rem 2rem 2rem;
+      padding: 8rem 2rem 2rem;
     }
 
     .intro h2 {
@@ -84,8 +86,6 @@
       flex-wrap: wrap;
       justify-content: center;
       padding: 1rem 2rem 4rem;
-      position: relative;
-      z-index: 1;
     }
 
     .art-image {
@@ -162,22 +162,23 @@
 
     .fallen-letter {
       position: absolute;
-      font-size: 4rem;
+      font-size: 8rem;
       font-weight: 700;
       opacity: 0.5;
       pointer-events: none;
       z-index: 1000;
       font-family: 'Playfair Display', serif;
-      transition: transform 1s ease-out, opacity 1s ease-out;
+      transition: transform 2s ease-out, opacity 2s ease-out;
+      will-change: transform;
     }
   </style>
 </head>
 <body>
   <header>
+    <div id="logo">
+      <span>N</span><span>a</span><span>d</span><span>a</span><span>a</span><span>r</span><span>t</span><span>e</span>
+    </div>
     <nav>
-      <h1 id="logo">
-        <span>N</span><span>a</span><span>d</span><span>a</span><span>a</span><span>r</span><span>t</span><span>e</span>
-      </h1>
       <ul>
         <li><a href="index.html" aria-current="page">Home</a></li>
         <li><a href="gallery.html">Gallery</a></li>
@@ -193,9 +194,7 @@
       <p>By Wenwen Cai</p>
     </section>
 
-    <section class="gallery" id="gallery">
-      <!-- Gallery images inserted here -->
-    </section>
+    <section class="gallery" id="gallery"></section>
   </main>
 
   <div class="lightbox" id="lightbox">
@@ -209,7 +208,6 @@
   </footer>
 
   <script>
-    // Gallery images
     const galleryData = [
       {
         src: "010.jpg",
@@ -272,10 +270,10 @@
       }
     });
 
-    // Letter fall animation
+    // Logo animation
     const logoSpans = document.querySelectorAll('#logo span');
     logoSpans.forEach(span => {
-      span.addEventListener('click', (e) => {
+      span.addEventListener('click', () => {
         const rect = span.getBoundingClientRect();
         const letter = span.textContent;
 
@@ -294,13 +292,12 @@
 
         setTimeout(() => {
           const dropY = window.innerHeight / 2 + Math.random() * 300;
-          clone.style.transform = `translateY(${dropY}px)`;
+          const rotation = (Math.random() * 360 - 180).toFixed(1);
+          clone.style.transform = `translateY(${dropY}px) rotate(${rotation}deg)`;
           clone.style.opacity = '0.5';
         }, 10);
 
-        setTimeout(() => {
-          clone.remove();
-        }, 2000);
+        // 不移除字母，保持堆积
       });
     });
   </script>
