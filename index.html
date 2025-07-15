@@ -3,44 +3,41 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home — Nadaarte</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <title>Contact — Nadaarte</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto&display=swap" rel="stylesheet" />
   <style>
     body {
-      font-family: 'Playfair Display', serif;
       margin: 0;
-      background: #fafafa;
-      color: #222;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom, #fdfdfd, #f6f1eb);
+      color: #333;
     }
 
     header nav {
-      display: block;
+      display: flex;
+      flex-direction: column;
       padding: 1rem 2rem;
       background: #fff;
-      box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
     header nav h1 {
-      font-weight: 700;
+      font-family: 'Playfair Display', serif;
       font-size: 2rem;
-      letter-spacing: -0.05em;
-      cursor: default;
       margin-bottom: 0.5rem;
-      text-align: left;
     }
 
     header nav ul {
       list-style: none;
       display: flex;
       gap: 2rem;
-      margin: 0;
       padding: 0;
+      margin: 0;
     }
 
     header nav ul li a {
       text-decoration: none;
-      color: #222;
-      font-weight: 400;
+      color: #333;
       font-size: 1rem;
       transition: color 0.3s ease;
     }
@@ -49,103 +46,89 @@
       color: #b35825;
     }
 
-    .intro {
-      text-align: center;
-      padding: 4rem 2rem 2rem;
+    .contact-section {
+      max-width: 600px;
+      margin: 5rem auto;
+      background: #fff;
+      padding: 3rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
     }
 
-    .intro h2 {
-      font-weight: 700;
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      color: #444;
-    }
-
-    .intro p {
-      font-weight: 400;
-      font-size: 0.875rem;
-      color: #aaa;
-    }
-
-    .gallery {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 1rem 2rem 4rem;
-    }
-
-    .art-image {
-      width: 380px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .art-image:hover {
-      transform: scale(1.03);
-    }
-
-    .lightbox {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.8);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      flex-direction: column;
-      padding: 1rem;
-    }
-
-    .lightbox.active {
-      display: flex;
-    }
-
-    .lightbox img {
-      max-width: 90vw;
-      max-height: 70vh;
-      border-radius: 8px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.5);
-    }
-
-    .lightbox .description {
-      margin-top: 1rem;
-      color: #fff;
-      font-size: 1.25rem;
-      text-align: center;
-      max-width: 90vw;
-      font-weight: 600;
+    .contact-section h2 {
       font-family: 'Playfair Display', serif;
-    }
-
-    .lightbox .close-btn {
-      position: absolute;
-      top: 1rem;
-      right: 1.5rem;
       font-size: 2rem;
-      color: white;
-      cursor: pointer;
-      font-weight: 700;
-      user-select: none;
-      background: rgba(0,0,0,0.3);
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      line-height: 36px;
+      margin-bottom: 0.5rem;
       text-align: center;
     }
 
-    /* ✅ 新增 footer 样式 */
+    .contact-section p {
+      font-size: 1rem;
+      color: #666;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    input, textarea {
+      font-size: 1rem;
+      font-family: 'Roboto', sans-serif;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #b35825;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    button {
+      background: #b35825;
+      color: white;
+      border: none;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: 'Roboto', sans-serif;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #944520;
+    }
+
+    .info {
+      margin-top: 2rem;
+      font-size: 0.95rem;
+      color: #555;
+      text-align: center;
+    }
+
+    .info a {
+      color: #b35825;
+      text-decoration: none;
+    }
+
     footer {
       text-align: center;
       padding: 2rem;
       font-size: 0.875rem;
       color: #999;
       border-top: 1px solid #eee;
+      margin-top: 4rem;
     }
   </style>
 </head>
@@ -154,97 +137,35 @@
     <nav>
       <h1>Nadaarte</h1>
       <ul>
-        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="index.html">Home</a></li>
         <li><a href="gallery.html">Gallery</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="content.html">content</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
-    <section class="intro">
-      <h2>Discover my latest oil paintings, where every stroke tells a story.</h2>
-      <p>By Wenwen Cai</p>
-    </section>
+    <section class="contact-section">
+      <h2>Let's Connect</h2>
+      <p>Feel free to send a message if you're interested in the artworks or would like to collaborate.</p>
 
-    <section class="gallery" id="gallery">
-      <!-- Images inserted by JS -->
+      <form action="mailto:douwenwen@yahoo.com" method="post" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your name" required />
+        <input type="email" name="email" placeholder="Your email" required />
+        <textarea name="message" placeholder="Your message" required></textarea>
+        <button type="submit">Send Email</button>
+      </form>
+
+      <div class="info">
+        Or contact directly via email: <a href="mailto:douwenwen@yahoo.com">douwenwen@yahoo.com</a><br/>
+        Based in The Hague, Netherlands & Valencia, Spain
+      </div>
     </section>
   </main>
-
-  <div class="lightbox" id="lightbox">
-    <span class="close-btn" id="lightboxClose">&times;</span>
-    <img id="lightboxImage" src="" alt="Large artwork" />
-    <div class="description" id="lightboxDescription"></div>
-  </div>
 
   <footer>
     <p>&copy; 2025 Nadaarte. All rights reserved.</p>
   </footer>
-
-  <script>
-    const galleryData = [
-      {
-        src: "010.jpg",
-        alt: "Artwork 1",
-        description: "Lanzarote Oil Painting – 2022, 70×50cm"
-      },
-      {
-        src: "008.jpg",
-        alt: "Artwork 2",
-        description: "Almeria Oil Painting – 2022, 70×50cm"
-      },
-      {
-        src: "004.jpg",
-        alt: "Artwork 3",
-        description: "Frida Oil Painting – 2022, 50×70cm"
-      },
-      {
-        src: "006.jpg",
-        alt: "Artwork 4",
-        description: "Santander Oil Painting – 2022, 70×50cm"
-      },
-      {
-        src: "002.jpg",
-        alt: "Artwork 5",
-        description: "David Bowie Oil Painting – 2022, 50×70cm"
-      }
-    ];
-
-    const gallery = document.getElementById('gallery');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightboxImage');
-    const lightboxDescription = document.getElementById('lightboxDescription');
-    const lightboxClose = document.getElementById('lightboxClose');
-
-    galleryData.forEach((item, index) => {
-      const img = document.createElement('img');
-      img.src = item.src;
-      img.alt = item.alt;
-      img.className = 'art-image';
-      img.dataset.index = index;
-      img.addEventListener('click', () => {
-        lightboxImage.src = item.src;
-        lightboxDescription.textContent = item.description;
-        lightbox.classList.add('active');
-      });
-      gallery.appendChild(img);
-    });
-
-    lightboxClose.addEventListener('click', () => {
-      lightbox.classList.remove('active');
-      lightboxImage.src = '';
-      lightboxDescription.textContent = '';
-    });
-
-    lightbox.addEventListener('click', (e) => {
-      if(e.target === lightbox) {
-        lightbox.classList.remove('active');
-        lightboxImage.src = '';
-        lightboxDescription.textContent = '';
-      }
-    });
-  </script>
 </body>
 </html>
