@@ -39,51 +39,27 @@
       font-size: 1rem;
     }
 
-    header nav ul li a:hover,
-    header nav ul li a[aria-current="page"] {
+    header nav ul li a:hover {
       color: #b35825;
-      font-weight: 700;
     }
 
     main {
       padding: 4rem 2rem;
+      max-width: 600px;
+      margin: 0 auto;
       text-align: center;
     }
 
-    h2 {
+    main h2 {
       font-size: 1.5rem;
+      font-weight: 700;
       margin-bottom: 1rem;
     }
 
-    form {
-      max-width: 400px;
-      margin: 0 auto;
-    }
-
-    input, textarea {
-      width: 100%;
-      padding: 0.75rem;
-      margin-bottom: 1rem;
-      font-family: 'Playfair Display', serif;
+    main p {
       font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    button {
-      padding: 0.75rem 2rem;
-      background-color: #b35825;
-      color: white;
-      border: none;
-      font-size: 1rem;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .note {
-      font-size: 0.875rem;
-      color: #666;
-      margin-top: 1.5rem;
+      color: #444;
+      line-height: 1.6;
     }
 
     footer {
@@ -96,6 +72,7 @@
   </style>
 </head>
 <body>
+
   <header>
     <nav>
       <h1>Nadaarte</h1>
@@ -103,27 +80,21 @@
         <li><a href="index.html">Home</a></li>
         <li><a href="gallery.html">Gallery</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="inquire.html" aria-current="page">Inquire</a></li>
+        <li><a href="connect.html" aria-current="page">Inquire</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
     <h2>Inquire</h2>
-    <p>To learn more about my work, please provide your contact information below.</p>
-
-    <form action="mailto:douwenwen@yahoo.com" method="POST" enctype="text/plain">
-      <input type="text" name="name" placeholder="Your Name" required />
-      <input type="email" name="email" placeholder="Your Email" required />
-      <textarea name="message" rows="5" placeholder="Your Message"></textarea>
-      <button type="submit">Send</button>
-    </form>
-
-    <p class="note">I live in The Hague (Netherlands) & Valencia (Spain).</p>
+    <p>To learn more about the artist, please provide your contact information.</p>
+    <p>I live in The Hague (Netherlands) & Valencia (Spain).</p>
+    <p>Email: <a href="mailto:douwenwen@yahoo.com">douwenwen@yahoo.com</a></p>
   </main>
 
   <footer>
     <p>&copy; 2025 Nadaarte. All rights reserved.</p>
   </footer>
+
 </body>
 </html>
