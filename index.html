@@ -14,19 +14,37 @@
     }
 
     header nav {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       padding: 1rem 2rem;
       background: #fff;
       box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+      position: relative;
+      z-index: 10;
     }
 
-    header nav h1 {
+    /* LOGO 样式调整 */
+    #logo {
       font-weight: 700;
       font-size: 2rem;
       letter-spacing: -0.05em;
-      cursor: default;
-      margin-bottom: 0.5rem;
-      text-align: left;
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      gap: 0.05em;
+      position: fixed;
+      top: 1rem;
+      right: 2rem;
+      background: white;
+      padding: 0.2rem 0.4rem;
+      border-radius: 4px;
+      z-index: 1001;
+    }
+
+    #logo span {
+      display: inline-block;
+      transition: opacity 0.5s ease;
     }
 
     header nav ul {
@@ -35,6 +53,11 @@
       gap: 2rem;
       margin: 0;
       padding: 0;
+      /* 右上logo固定，导航居左 */
+      margin-left: 2rem;
+      font-weight: 400;
+      font-size: 1rem;
+      align-items: center;
     }
 
     header nav ul li a {
@@ -52,6 +75,7 @@
     .intro {
       text-align: center;
       padding: 4rem 2rem 2rem;
+      margin-top: 80px; /* 顶部logo固定留白 */
     }
 
     .intro h2 {
@@ -139,25 +163,57 @@
       text-align: center;
     }
 
-    /* ✅ 新增 footer 样式 */
+    /* 底部点击消失字母容器 */
+    #bottom-letters {
+      position: fixed;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 2rem;
+      color: #b35825;
+      display: flex;
+      gap: 0.1em;
+      min-height: 2.5rem;
+      z-index: 1000;
+      user-select: none;
+    }
+
+    /* 浮动动画字母 */
+    .floating-letter {
+      position: absolute;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      font-size: 2rem;
+      color: #b35825;
+      pointer-events: none;
+      transition: all 0.6s ease;
+      opacity: 1;
+    }
+
+    /* footer */
     footer {
       text-align: center;
       padding: 2rem;
       font-size: 0.875rem;
       color: #999;
       border-top: 1px solid #eee;
+      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
   <header>
     <nav>
-      <h1>Nadaarte</h1>
+      <h1 id="logo" aria-label="Nadaarte logo" role="img">
+        <span>N</span><span>a</span><span>d</span><span>a</span><span>a</span><span>r</span><span>t</span><span>e</span>
+      </h1>
       <ul>
         <li><a href="index.html" aria-current="page">Home</a></li>
         <li><a href="gallery.html">Gallery</a></li>
         <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">contact</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </nav>
   </header>
@@ -169,12 +225,15 @@
     </section>
 
     <section class="gallery" id="gallery">
-      <!-- Images inserted by JS -->
+      <!-- 图片由 JS 插入 -->
     </section>
   </main>
 
-  <div class="lightbox" id="lightbox">
-    <span class="close-btn" id="lightboxClose">&times;</span>
+  <!-- 底部显示点击消失的字母 -->
+  <div id="bottom-letters" aria-live="polite" aria-atomic="true"></div>
+
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxDescription">
+    <span class="close-btn" id="lightboxClose" role="button" aria-label="Close lightbox">&times;</span>
     <img id="lightboxImage" src="" alt="Large artwork" />
     <div class="description" id="lightboxDescription"></div>
   </div>
@@ -184,32 +243,13 @@
   </footer>
 
   <script>
+    // 画廊图片数据
     const galleryData = [
-      {
-        src: "010.jpg",
-        alt: "Artwork 1",
-        description: "Lanzarote Oil Painting – 2022, 70×50cm"
-      },
-      {
-        src: "008.jpg",
-        alt: "Artwork 2",
-        description: "Almeria Oil Painting – 2022, 70×50cm"
-      },
-      {
-        src: "004.jpg",
-        alt: "Artwork 3",
-        description: "Frida Oil Painting – 2022, 50×70cm"
-      },
-      {
-        src: "006.jpg",
-        alt: "Artwork 4",
-        description: "Santander Oil Painting – 2022, 70×50cm"
-      },
-      {
-        src: "002.jpg",
-        alt: "Artwork 5",
-        description: "David Bowie Oil Painting – 2022, 50×70cm"
-      }
+      { src: "010.jpg", alt: "Artwork 1", description: "Lanzarote Oil Painting – 2022, 70×50cm" },
+      { src: "008.jpg", alt: "Artwork 2", description: "Almeria Oil Painting – 2022, 70×50cm" },
+      { src: "004.jpg", alt: "Artwork 3", description: "Frida Oil Painting – 2022, 50×70cm" },
+      { src: "006.jpg", alt: "Artwork 4", description: "Santander Oil Painting – 2022, 70×50cm" },
+      { src: "002.jpg", alt: "Artwork 5", description: "David Bowie Oil Painting – 2022, 50×70cm" }
     ];
 
     const gallery = document.getElementById('gallery');
@@ -245,6 +285,50 @@
         lightboxDescription.textContent = '';
       }
     });
+
+    // logo 字母点击飞到底部动画
+    const logo = document.getElementById('logo');
+    const letters = logo.querySelectorAll('span');
+    const bottomLetters = document.getElementById('bottom-letters');
+
+    letters.forEach((letter, index) => {
+      letter.addEventListener('click', () => {
+        if (letter.style.opacity === '0') return; // 已隐藏的字母不响应
+
+        const rect = letter.getBoundingClientRect();
+
+        // 创建浮动字母
+        const floatLetter = document.createElement('span');
+        floatLetter.textContent = letter.textContent;
+        floatLetter.classList.add('floating-letter');
+        document.body.appendChild(floatLetter);
+
+        // 初始位置与logo字母重叠
+        floatLetter.style.left = rect.left + 'px';
+        floatLetter.style.top = rect.top + 'px';
+
+        // 隐藏logo字母
+        letter.style.opacity = '0';
+
+        // 计算目标位置（bottom-letters 容器的右侧偏移）
+        const bottomRect = bottomLetters.getBoundingClientRect();
+        const targetX = bottomRect.left + bottomLetters.children.length * (floatLetter.offsetWidth + 4);
+        const targetY = bottomRect.top;
+
+        // 触发动画，移动到目标位置
+        requestAnimationFrame(() => {
+          floatLetter.style.left = targetX + 'px';
+          floatLetter.style.top = targetY + 'px';
+
+          // 动画结束后，把字母放入底部容器
+          setTimeout(() => {
+            bottomLetters.appendChild(floatLetter);
+            floatLetter.style.position = 'static';
+            floatLetter.style.opacity = '1';
+          }, 600);
+        });
+      });
+    });
   </script>
 </body>
-</html> 
+</html>
