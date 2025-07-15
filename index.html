@@ -2,271 +2,114 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home — Nadaarte</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nadaarte Logo Interaction</title>
   <style>
     body {
-      font-family: 'Playfair Display', serif;
-      margin: 0;
-      background: #fafafa;
-      color: #222;
-    }
-
-    header nav {
-      display: block;
-      padding: 1rem 2rem;
-      background: #fff;
-      box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
-    }
-
-    header nav h1 {
-      font-weight: 700;
-      font-size: 2rem;
-      letter-spacing: -0.05em;
-      cursor: pointer;
-      margin-bottom: 0.5rem;
-      text-align: left;
-      user-select: none;
-    }
-
-    header nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
       margin: 0;
       padding: 0;
-    }
-
-    header nav ul li a {
-      text-decoration: none;
-      color: #222;
-      font-weight: 400;
-      font-size: 1rem;
-      transition: color 0.3s ease;
-      user-select: none;
-      cursor: pointer;
-    }
-
-    header nav ul li a:hover {
-      color: #b35825;
-    }
-
-    .intro {
-      text-align: center;
-      padding: 4rem 2rem 2rem;
-    }
-
-    .intro h2 {
-      font-weight: 700;
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      color: #444;
-    }
-
-    .intro p {
-      font-weight: 400;
-      font-size: 0.875rem;
-      color: #aaa;
-    }
-
-    .gallery {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 1rem 2rem 4rem;
-    }
-
-    .art-image {
-      width: 380px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-
-    .art-image:hover {
-      transform: scale(1.03);
-    }
-
-    .lightbox {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.8);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      flex-direction: column;
-      padding: 1rem;
-    }
-
-    .lightbox.active {
-      display: flex;
-    }
-
-    .lightbox img {
-      max-width: 90vw;
-      max-height: 70vh;
-      border-radius: 8px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.5);
-    }
-
-    .lightbox .description {
-      margin-top: 1rem;
-      color: #fff;
-      font-size: 1.25rem;
-      text-align: center;
-      max-width: 90vw;
-      font-weight: 600;
-      font-family: 'Playfair Display', serif;
-    }
-
-    .lightbox .close-btn {
-      position: absolute;
-      top: 1rem;
-      right: 1.5rem;
-      font-size: 2rem;
+      background: #111;
       color: white;
+      font-family: 'Arial', sans-serif;
+      overflow-x: hidden;
+    }
+
+    #logo {
+      font-size: 48px;
+      text-align: center;
+      margin-top: 50px;
+      z-index: 10;
+      position: relative;
+    }
+
+    .logo-letter {
+      display: inline-block;
       cursor: pointer;
-      font-weight: 700;
-      user-select: none;
-      background: rgba(0,0,0,0.3);
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      line-height: 36px;
-      text-align: center;
+      transition: color 0.4s ease;
     }
 
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.875rem;
-      color: #999;
-      border-top: 1px solid #eee;
-    }
-
-    /* 掉落字母样式 */
-    .falling-letter {
-      position: fixed;
-      font-weight: 700;
+    /* 掉落副本样式 */
+    .clone-letter {
+      position: absolute;
+      font-size: 48px;
+      transform: scale(1);
+      transition: transform 1.2s ease, opacity 1s ease;
+      opacity: 0.5;
+      z-index: 999;
       pointer-events: none;
-      will-change: transform, top, opacity;
-      z-index: 10000;
-      user-select: none;
+      font-family: 'Arial', sans-serif;
+    }
+
+    .clone-letter.animate {
+      transform: scale(8) rotate(360deg) translateY(100px);
+    }
+
+    /* 三原色 */
+    .red    { color: rgba(255, 0, 0, 0.5); }
+    .yellow { color: rgba(255, 255, 0, 0.5); }
+    .blue   { color: rgba(0, 0, 255, 0.5); }
+
+    /* 背景图例 */
+    .image-section {
+      margin-top: 100px;
+      height: 400px;
+      background-image: url('https://picsum.photos/1200/400?grayscale');
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      z-index: 1;
     }
   </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <h1 id="nadaarteTitle">Nadaarte</h1>
-      <ul>
-        <li><a href="index.html" aria-current="page">Home</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main>
-    <section class="intro">
-      <h2>Discover my latest oil paintings, where every stroke tells a story.</h2>
-      <p>By Wenwen Cai</p>
-    </section>
-
-    <section class="gallery" id="gallery">
-      <!-- Images inserted by JS -->
-    </section>
-  </main>
-
-  <div class="lightbox" id="lightbox">
-    <span class="close-btn" id="lightboxClose">&times;</span>
-    <img id="lightboxImage" src="" alt="Large artwork" />
-    <div class="description" id="lightboxDescription"></div>
+  <div id="logo">
+    <span class="logo-letter">N</span>
+    <span class="logo-letter">a</span>
+    <span class="logo-letter">d</span>
+    <span class="logo-letter">a</span>
+    <span class="logo-letter">a</span>
+    <span class="logo-letter">r</span>
+    <span class="logo-letter">t</span>
+    <span class="logo-letter">e</span>
   </div>
 
-  <footer>
-    <p>&copy; 2025 Nadaarte. All rights reserved.</p>
-  </footer>
+  <div class="image-section"></div>
 
   <script>
-    const colors = ['#E63946', '#F1C40F', '#48CAE4']; // 大红，中黄，天蓝
-    const nadaarteTitle = document.getElementById('nadaarteTitle');
-    let nadaarteClickedCount = 0;
+    const colors = ['red', 'yellow', 'blue'];
 
-    function createFallingLetter(originalSpan) {
-      const rect = originalSpan.getBoundingClientRect();
-      const letter = originalSpan.textContent;
-      const fall = document.createElement('span');
-      fall.className = 'falling-letter';
-      fall.textContent = letter;
+    document.querySelectorAll('.logo-letter').forEach(letter => {
+      letter.dataset.clicks = '0';
 
-      fall.style.left = rect.left + 'px';
-      fall.style.top = rect.top + 'px';
-      fall.style.fontSize = window.getComputedStyle(originalSpan).fontSize;
-      fall.style.color = colors[Math.floor(Math.random() * colors.length)];
-      fall.style.opacity = '0.5';
-      fall.style.transform = 'scale(1) rotate(0deg)';
+      letter.addEventListener('click', () => {
+        let clicks = parseInt(letter.dataset.clicks);
 
-      document.body.appendChild(fall);
+        if (clicks >= 2) return; // 第三次点击无效
 
-      const scale = 8; // 8倍放大
-      const rotateDeg = (Math.random() * 720) - 360;
-      const fallDistance = window.innerHeight - rect.top + 100;
-      const duration = 3000;
-
-      let start = null;
-      function animate(timestamp) {
-        if (!start) start = timestamp;
-        const elapsed = timestamp - start;
-        const progress = Math.min(elapsed / duration, 1);
-
-        const currentScale = 1 + (scale - 1) * progress;
-        const currentRotate = rotateDeg * progress;
-        const currentTop = rect.top + fallDistance * progress;
-
-        fall.style.transform = `scale(${currentScale}) rotate(${currentRotate}deg)`;
-        fall.style.top = currentTop + 'px';
-        fall.style.opacity = (0.5 * (1 - progress)).toString();
-
-        if (progress < 1) {
-          requestAnimationFrame(animate);
-        } else {
-          fall.remove();
+        // 颜色变化逻辑
+        if (clicks === 0) {
+          letter.style.color = 'rgba(100, 100, 100, 0.3)';
+        } else if (clicks === 1) {
+          letter.style.color = 'rgba(255, 255, 255, 1)';
         }
-      }
-      requestAnimationFrame(animate);
-    }
 
-    // 点击Nadaarte触发动画，且文字颜色切换
-    nadaarteTitle.addEventListener('click', () => {
-      const letters = nadaarteTitle.textContent.split('');
-      nadaarteTitle.textContent = ''; // 清空文字，稍后重建每个字母span
-      letters.forEach(letter => {
-        const span = document.createElement('span');
-        span.textContent = letter;
-        span.style.display = 'inline-block';
-        span.style.transition = 'color 0.3s ease';
-        nadaarteTitle.appendChild(span);
-        createFallingLetter(span);
+        // 掉落动画副本（仅一个字母）
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        const rect = letter.getBoundingClientRect();
+        const clone = letter.cloneNode(true);
+
+        clone.classList.add('clone-letter', 'animate', color);
+        clone.style.left = `${rect.left}px`;
+        clone.style.top = `${rect.top + window.scrollY}px`;
+
+        document.body.appendChild(clone);
+
+        // 更新点击状态
+        letter.dataset.clicks = (clicks + 1).toString();
       });
-
-      // 颜色切换逻辑
-      nadaarteClickedCount++;
-      if (nadaarteClickedCount % 2 === 1) {
-        nadaarteTitle.style.color = '#888'; // 灰色
-      } else {
-        nadaarteTitle.style.color = '#fff'; // 白色
-      }
     });
-
-    // 原本导航栏不变，未加动画
   </script>
+
 </body>
 </html>
