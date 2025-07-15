@@ -12,7 +12,6 @@
       background: #fafafa;
       color: #222;
       overflow-x: hidden;
-      position: relative;
     }
 
     header nav {
@@ -26,44 +25,38 @@
       z-index: 100;
     }
 
-    header nav h1 {
+    /* Logo 拆成 span 实现点击动画 */
+    #logo {
+      display: flex;
+      gap: 0.05em;
       font-weight: 700;
       font-size: 2rem;
       letter-spacing: -0.05em;
-      cursor: pointer;
+      cursor: default;
       user-select: none;
-      display: flex;
-      gap: 0.05em;
-      margin: 0;
     }
-
-    header nav h1 span {
+    #logo span {
       display: inline-block;
       cursor: pointer;
-      transition: transform 0.3s ease;
       user-select: none;
     }
 
-    header nav ul {
+    nav ul {
       list-style: none;
       display: flex;
       gap: 2rem;
       margin: 0;
       padding: 0;
     }
-
-    header nav ul li a {
+    nav ul li a {
       text-decoration: none;
       color: #222;
       font-weight: 400;
       font-size: 1rem;
       cursor: pointer;
       user-select: none;
-      transition: color 0.3s ease;
-      display: inline-block;
     }
-
-    header nav ul li a:hover {
+    nav ul li a:hover {
       color: #b35825;
     }
 
@@ -71,14 +64,12 @@
       text-align: center;
       padding: 4rem 2rem 2rem;
     }
-
     .intro h2 {
       font-weight: 700;
       font-size: 1.5rem;
       margin-bottom: 0.5rem;
       color: #444;
     }
-
     .intro p {
       font-weight: 400;
       font-size: 0.875rem;
@@ -92,7 +83,6 @@
       justify-content: center;
       padding: 1rem 2rem 4rem;
     }
-
     .art-image {
       width: 380px;
       height: 200px;
@@ -102,7 +92,6 @@
       cursor: pointer;
       transition: transform 0.3s ease;
     }
-
     .art-image:hover {
       transform: scale(1.03);
     }
@@ -118,18 +107,15 @@
       flex-direction: column;
       padding: 1rem;
     }
-
     .lightbox.active {
       display: flex;
     }
-
     .lightbox img {
       max-width: 90vw;
       max-height: 70vh;
       border-radius: 8px;
       box-shadow: 0 6px 12px rgba(0,0,0,0.5);
     }
-
     .lightbox .description {
       margin-top: 1rem;
       color: #fff;
@@ -139,7 +125,6 @@
       font-weight: 600;
       font-family: 'Playfair Display', serif;
     }
-
     .lightbox .close-btn {
       position: absolute;
       top: 1rem;
@@ -165,34 +150,30 @@
       border-top: 1px solid #eee;
     }
 
-    /* 掉落字母样式 */
+    /* 掉落动画字母CSS */
     .falling-letter {
       position: fixed;
-      top: 0;
-      left: 0;
       font-weight: 700;
-      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      opacity: 0.5;
       pointer-events: none;
       transform-origin: center;
-      opacity: 0.5;
-      z-index: 1000;
       user-select: none;
-      transition: none !important;
+      z-index: 1000;
     }
   </style>
 </head>
 <body>
   <header>
     <nav>
-      <h1 id="logo">
-        <!-- Nadaarte每个字母都包span -->
+      <div id="logo">
         <span>N</span><span>a</span><span>d</span><span>a</span><span>a</span><span>r</span><span>t</span><span>e</span>
-      </h1>
-      <ul id="navList">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
+      </div>
+      <ul>
+        <li><a href="index.html"><span>Home</span></a></li>
+        <li><a href="gallery.html"><span>Gallery</span></a></li>
+        <li><a href="about.html"><span>About</span></a></li>
+        <li><a href="contact.html"><span>Contact</span></a></li>
       </ul>
     </nav>
   </header>
@@ -203,9 +184,7 @@
       <p>By Wenwen Cai</p>
     </section>
 
-    <section class="gallery" id="gallery">
-      <!-- Images inserted by JS -->
-    </section>
+    <section class="gallery" id="gallery"></section>
   </main>
 
   <div class="lightbox" id="lightbox">
@@ -219,48 +198,25 @@
   </footer>
 
   <script>
-    // 画廊数据
     const galleryData = [
-      {
-        src: "010.jpg",
-        alt: "Artwork 1",
-        description: "Lanzarote Oil Painting – 2022, 70×50cm"
-      },
-      {
-        src: "008.jpg",
-        alt: "Artwork 2",
-        description: "Almeria Oil Painting – 2022, 70×50cm"
-      },
-      {
-        src: "004.jpg",
-        alt: "Artwork 3",
-        description: "Frida Oil Painting – 2022, 50×70cm"
-      },
-      {
-        src: "006.jpg",
-        alt: "Artwork 4",
-        description: "Santander Oil Painting – 2022, 70×50cm"
-      },
-      {
-        src: "002.jpg",
-        alt: "Artwork 5",
-        description: "David Bowie Oil Painting – 2022, 50×70cm"
-      }
+      { src: "010.jpg", alt: "Artwork 1", description: "Lanzarote Oil Painting – 2022, 70×50cm" },
+      { src: "008.jpg", alt: "Artwork 2", description: "Almeria Oil Painting – 2022, 70×50cm" },
+      { src: "004.jpg", alt: "Artwork 3", description: "Frida Oil Painting – 2022, 50×70cm" },
+      { src: "006.jpg", alt: "Artwork 4", description: "Santander Oil Painting – 2022, 70×50cm" },
+      { src: "002.jpg", alt: "Artwork 5", description: "David Bowie Oil Painting – 2022, 50×70cm" }
     ];
 
-    // 初始化画廊
     const gallery = document.getElementById('gallery');
     const lightbox = document.getElementById('lightbox');
     const lightboxImage = document.getElementById('lightboxImage');
     const lightboxDescription = document.getElementById('lightboxDescription');
     const lightboxClose = document.getElementById('lightboxClose');
 
-    galleryData.forEach((item, index) => {
+    galleryData.forEach(item => {
       const img = document.createElement('img');
       img.src = item.src;
       img.alt = item.alt;
       img.className = 'art-image';
-      img.dataset.index = index;
       img.addEventListener('click', () => {
         lightboxImage.src = item.src;
         lightboxDescription.textContent = item.description;
@@ -271,78 +227,51 @@
 
     lightboxClose.addEventListener('click', () => {
       lightbox.classList.remove('active');
-      lightboxImage.src = '';
-      lightboxDescription.textContent = '';
+    });
+    lightbox.addEventListener('click', e => {
+      if (e.target === lightbox) lightbox.classList.remove('active');
     });
 
-    lightbox.addEventListener('click', (e) => {
-      if(e.target === lightbox) {
-        lightbox.classList.remove('active');
-        lightboxImage.src = '';
-        lightboxDescription.textContent = '';
-      }
-    });
+    const colors = ['#d73027', '#f7b732', '#4da6ff'];
 
-    // 三原色数组
-    const colors = ['#d73027', '#f7b732', '#4da6ff']; // 大红、中黄、天蓝色
+    function dropElement(el, text, href) {
+      const rect = el.getBoundingClientRect();
+      const span = document.createElement('div');
+      span.className = 'falling-letter';
+      span.textContent = text;
+      span.style.left = rect.left + 'px';
+      span.style.top = rect.top + 'px';
+      span.style.color = colors[Math.floor(Math.random() * colors.length)];
 
-    // 掉落动画函数
-    function dropLetter(element, letter) {
-      // 获取元素位置和大小
-      const rect = element.getBoundingClientRect();
-      const startX = rect.left;
-      const startY = rect.top;
+      document.body.appendChild(span);
 
-      // 创建新的掉落字母元素
-      const fallSpan = document.createElement('span');
-      fallSpan.className = 'falling-letter';
-      fallSpan.textContent = letter;
-      fallSpan.style.left = startX + 'px';
-      fallSpan.style.top = startY + 'px';
-      fallSpan.style.fontSize = '2rem';
-      fallSpan.style.color = colors[Math.floor(Math.random() * colors.length)];
-      fallSpan.style.opacity = '0.5';
+      const dx = (Math.random() - 0.5) * 200;
+      const dy = window.innerHeight + 200;
+      const rot = (Math.random() - 0.5) * 720;
 
-      document.body.appendChild(fallSpan);
+      span.animate([
+        { transform: 'translate(0,0) scale(1) rotate(0deg)', opacity: 0.5 },
+        { transform: `translate(${dx}px,${dy}px) scale(6) rotate(${rot}deg)`, opacity: 0 }
+      ], { duration: 3000, easing: 'ease-in', fill: 'forwards' });
 
-      // 计算随机旋转角度和X轴范围，Y轴范围向下较大
-      const rotateDeg = Math.random() * 720 - 360; // -360°到360°
-      const translateX = (Math.random() - 0.5) * 300; // 左右150px范围
-      const translateY = window.innerHeight + 200; // 掉落到底部外200px
-
-      // 使用动画
-      fallSpan.animate([
-        { transform: 'translate(0, 0) scale(1) rotate(0deg)', opacity: 0.5 },
-        { transform: `translate(${translateX}px, ${translateY}px) scale(6) rotate(${rotateDeg}deg)`, opacity: 0 }
-      ], {
-        duration: 4000,
-        easing: 'ease-in',
-        fill: 'forwards'
-      });
-
-      // 动画结束后移除元素
       setTimeout(() => {
-        fallSpan.remove();
-      }, 4000);
+        span.remove();
+        if (href) window.location.href = href;
+      }, 3000);
     }
 
-    // 给logo的每个字母绑定点击事件
-    const logo = document.getElementById('logo');
-    logo.querySelectorAll('span').forEach(span => {
+    document.querySelectorAll('#logo span').forEach(span => {
       span.addEventListener('click', e => {
-        dropLetter(e.target, e.target.textContent);
+        dropElement(e.target, e.target.textContent, null);
       });
     });
 
-    // 给导航栏每个链接绑定点击事件
-    const navLinks = document.querySelectorAll('nav ul li a');
-    navLinks.forEach(link => {
-      link.addEventListener('click', e => {
-        e.preventDefault(); // 阻止默认跳转，先动画
-
-        dropLetter(e.target, e.target.textContent);
-
-        // 4秒后跳转链接
-        setTimeout(() => {
-          window.location.href = e.target.href;
-        }, 4000
+    document.querySelectorAll('nav ul li a span').forEach(span => {
+      span.addEventListener('click', e => {
+        const href = e.target.parentElement.href;
+        dropElement(e.target, e.target.textContent, href);
+      });
+    });
+  </script>
+</body>
+</html>
