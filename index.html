@@ -3,332 +3,150 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home — Nadaarte</title>
+  <title>Nadaarte Logo Effect</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'Playfair Display', serif;
       margin: 0;
-      background: #fafafa;
+      font-family: 'Playfair Display', serif;
+      background-color: #fafafa;
       color: #222;
     }
 
-    header nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1rem 2rem;
-      background: #fff;
-      box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
-      position: relative;
-      z-index: 10;
+    /* 顶部透明色条 */
+    #logo-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.7);
+      padding: 1rem 0;
+      text-align: center;
+      z-index: 1000;
+      backdrop-filter: blur(6px);
     }
 
-    /* LOGO 样式调整 */
+    /* Logo 字母样式 */
     #logo {
+      font-size: 2.2rem;
       font-weight: 700;
-      font-size: 2rem;
-      letter-spacing: -0.05em;
-      cursor: pointer;
+      letter-spacing: 0.05em;
       user-select: none;
-      display: flex;
-      gap: 0.05em;
-      position: fixed;
-      top: 1rem;
-      right: 2rem;
-      background: white;
-      padding: 0.2rem 0.4rem;
-      border-radius: 4px;
-      z-index: 1001;
+      display: inline-flex;
+      gap: 0.1em;
     }
 
     #logo span {
-      display: inline-block;
-      transition: opacity 0.5s ease;
-    }
-
-    header nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      margin: 0;
-      padding: 0;
-      /* 右上logo固定，导航居左 */
-      margin-left: 2rem;
-      font-weight: 400;
-      font-size: 1rem;
-      align-items: center;
-    }
-
-    header nav ul li a {
-      text-decoration: none;
-      color: #222;
-      font-weight: 400;
-      font-size: 1rem;
-      transition: color 0.3s ease;
-    }
-
-    header nav ul li a:hover {
-      color: #b35825;
-    }
-
-    .intro {
-      text-align: center;
-      padding: 4rem 2rem 2rem;
-      margin-top: 80px; /* 顶部logo固定留白 */
-    }
-
-    .intro h2 {
-      font-weight: 700;
-      font-size: 1.5rem;
-      margin-bottom: 0.5rem;
-      color: #444;
-    }
-
-    .intro p {
-      font-weight: 400;
-      font-size: 0.875rem;
-      color: #aaa;
-    }
-
-    .gallery {
-      display: flex;
-      gap: 1rem;
-      flex-wrap: wrap;
-      justify-content: center;
-      padding: 1rem 2rem 4rem;
-    }
-
-    .art-image {
-      width: 380px;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 8px;
-      box-shadow: 0 4px 6px rgb(0 0 0 / 0.1);
       cursor: pointer;
-      transition: transform 0.3s ease;
+      transition: opacity 0.3s ease;
     }
 
-    .art-image:hover {
-      transform: scale(1.03);
-    }
-
-    .lightbox {
-      position: fixed;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: rgba(0,0,0,0.8);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      flex-direction: column;
-      padding: 1rem;
-    }
-
-    .lightbox.active {
-      display: flex;
-    }
-
-    .lightbox img {
-      max-width: 90vw;
-      max-height: 70vh;
-      border-radius: 8px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.5);
-    }
-
-    .lightbox .description {
-      margin-top: 1rem;
-      color: #fff;
-      font-size: 1.25rem;
-      text-align: center;
-      max-width: 90vw;
-      font-weight: 600;
-      font-family: 'Playfair Display', serif;
-    }
-
-    .lightbox .close-btn {
-      position: absolute;
-      top: 1rem;
-      right: 1.5rem;
-      font-size: 2rem;
-      color: white;
-      cursor: pointer;
-      font-weight: 700;
-      user-select: none;
-      background: rgba(0,0,0,0.3);
-      border-radius: 50%;
-      width: 36px;
-      height: 36px;
-      line-height: 36px;
-      text-align: center;
-    }
-
-    /* 底部点击消失字母容器 */
+    /* 底部接收区 */
     #bottom-letters {
       position: fixed;
-      bottom: 1rem;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #111;
+      color: white;
       font-size: 2rem;
-      color: #b35825;
+      font-weight: 700;
       display: flex;
+      justify-content: center;
       gap: 0.1em;
-      min-height: 2.5rem;
+      padding: 1rem 0;
       z-index: 1000;
       user-select: none;
     }
 
-    /* 浮动动画字母 */
+    /* 飞行中的字母动画 */
     .floating-letter {
-      position: absolute;
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
+      position: fixed;
       font-size: 2rem;
-      color: #b35825;
+      font-weight: 700;
+      z-index: 9999;
       pointer-events: none;
       transition: all 0.6s ease;
-      opacity: 1;
-    }
-
-    /* footer */
-    footer {
-      text-align: center;
-      padding: 2rem;
-      font-size: 0.875rem;
-      color: #999;
-      border-top: 1px solid #eee;
-      margin-top: 2rem;
     }
   </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <h1 id="logo" aria-label="Nadaarte logo" role="img">
-        <span>N</span><span>a</span><span>d</span><span>a</span><span>a</span><span>r</span><span>t</span><span>e</span>
-      </h1>
-      <ul>
-        <li><a href="index.html" aria-current="page">Home</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main>
-    <section class="intro">
-      <h2>Discover my latest oil paintings, where every stroke tells a story.</h2>
-      <p>By Wenwen Cai</p>
-    </section>
-
-    <section class="gallery" id="gallery">
-      <!-- 图片由 JS 插入 -->
-    </section>
-  </main>
-
-  <!-- 底部显示点击消失的字母 -->
-  <div id="bottom-letters" aria-live="polite" aria-atomic="true"></div>
-
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-labelledby="lightboxDescription">
-    <span class="close-btn" id="lightboxClose" role="button" aria-label="Close lightbox">&times;</span>
-    <img id="lightboxImage" src="" alt="Large artwork" />
-    <div class="description" id="lightboxDescription"></div>
+  <!-- 顶部透明色条与 logo -->
+  <div id="logo-bar">
+    <div id="logo" aria-label="Nadaarte logo">
+      <!-- 每个字母用 span 包裹，并赋予颜色 -->
+      <span style="color: red;">N</span>
+      <span style="color: yellow;">a</span>
+      <span style="color: blue;">d</span>
+      <span style="color: red;">a</span>
+      <span style="color: yellow;">a</span>
+      <span style="color: blue;">r</span>
+      <span style="color: red;">t</span>
+      <span style="color: yellow;">e</span>
+    </div>
   </div>
 
-  <footer>
-    <p>&copy; 2025 Nadaarte. All rights reserved.</p>
-  </footer>
+  <!-- 页面内容填充 -->
+  <main style="padding-top: 120px; text-align: center;">
+    <h2>Welcome to Nadaarte</h2>
+    <p>Click the letters in the logo to drop them down into the bottom bar.</p>
+    <p style="color:#999; font-size: 0.9rem;">Inspired by KABK's interactive identity</p>
+  </main>
+
+  <!-- 底部字母容器 -->
+  <div id="bottom-letters" aria-live="polite" aria-atomic="true"></div>
 
   <script>
-    // 画廊图片数据
-    const galleryData = [
-      { src: "010.jpg", alt: "Artwork 1", description: "Lanzarote Oil Painting – 2022, 70×50cm" },
-      { src: "008.jpg", alt: "Artwork 2", description: "Almeria Oil Painting – 2022, 70×50cm" },
-      { src: "004.jpg", alt: "Artwork 3", description: "Frida Oil Painting – 2022, 50×70cm" },
-      { src: "006.jpg", alt: "Artwork 4", description: "Santander Oil Painting – 2022, 70×50cm" },
-      { src: "002.jpg", alt: "Artwork 5", description: "David Bowie Oil Painting – 2022, 50×70cm" }
-    ];
-
-    const gallery = document.getElementById('gallery');
-    const lightbox = document.getElementById('lightbox');
-    const lightboxImage = document.getElementById('lightboxImage');
-    const lightboxDescription = document.getElementById('lightboxDescription');
-    const lightboxClose = document.getElementById('lightboxClose');
-
-    galleryData.forEach((item, index) => {
-      const img = document.createElement('img');
-      img.src = item.src;
-      img.alt = item.alt;
-      img.className = 'art-image';
-      img.dataset.index = index;
-      img.addEventListener('click', () => {
-        lightboxImage.src = item.src;
-        lightboxDescription.textContent = item.description;
-        lightbox.classList.add('active');
-      });
-      gallery.appendChild(img);
-    });
-
-    lightboxClose.addEventListener('click', () => {
-      lightbox.classList.remove('active');
-      lightboxImage.src = '';
-      lightboxDescription.textContent = '';
-    });
-
-    lightbox.addEventListener('click', (e) => {
-      if(e.target === lightbox) {
-        lightbox.classList.remove('active');
-        lightboxImage.src = '';
-        lightboxDescription.textContent = '';
-      }
-    });
-
-    // logo 字母点击飞到底部动画
     const logo = document.getElementById('logo');
-    const letters = logo.querySelectorAll('span');
-    const bottomLetters = document.getElementById('bottom-letters');
+    const bottomBar = document.getElementById('bottom-letters');
 
-    letters.forEach((letter, index) => {
-      letter.addEventListener('click', () => {
-        if (letter.style.opacity === '0') return; // 已隐藏的字母不响应
+    const letters = Array.from(logo.querySelectorAll('span'));
 
-        const rect = letter.getBoundingClientRect();
+    letters.forEach((span, index) => {
+      span.addEventListener('click', () => {
+        if (span.style.opacity === '0') return; // already gone
 
-        // 创建浮动字母
-        const floatLetter = document.createElement('span');
-        floatLetter.textContent = letter.textContent;
-        floatLetter.classList.add('floating-letter');
-        document.body.appendChild(floatLetter);
+        const rect = span.getBoundingClientRect();
 
-        // 初始位置与logo字母重叠
-        floatLetter.style.left = rect.left + 'px';
-        floatLetter.style.top = rect.top + 'px';
+        // 创建一个飞行动画字母
+        const flying = document.createElement('span');
+        flying.classList.add('floating-letter');
+        flying.textContent = span.textContent;
+        flying.style.color = span.style.color;
+        flying.style.left = `${rect.left}px`;
+        flying.style.top = `${rect.top}px`;
+        document.body.appendChild(flying);
 
-        // 隐藏logo字母
-        letter.style.opacity = '0';
+        // 隐藏原来的字母
+        span.style.opacity = '0';
 
-        // 计算目标位置（bottom-letters 容器的右侧偏移）
-        const bottomRect = bottomLetters.getBoundingClientRect();
-        const targetX = bottomRect.left + bottomLetters.children.length * (floatLetter.offsetWidth + 4);
-        const targetY = bottomRect.top;
+        // 计算目标位置（bottomBar 居中 + 当前已有字母偏移）
+        const bottomRect = bottomBar.getBoundingClientRect();
+        const targetLeft = bottomRect.left + bottomBar.children.length * 24 + 10;
+        const targetTop = bottomRect.top + 10;
 
-        // 触发动画，移动到目标位置
+        // 触发动画
         requestAnimationFrame(() => {
-          floatLetter.style.left = targetX + 'px';
-          floatLetter.style.top = targetY + 'px';
-
-          // 动画结束后，把字母放入底部容器
-          setTimeout(() => {
-            bottomLetters.appendChild(floatLetter);
-            floatLetter.style.position = 'static';
-            floatLetter.style.opacity = '1';
-          }, 600);
+          flying.style.left = `${targetLeft}px`;
+          flying.style.top = `${targetTop}px`;
         });
+
+        // 动画结束后将字母加入 bottomBar
+        setTimeout(() => {
+          const final = document.createElement('span');
+          final.textContent = span.textContent;
+          final.style.color = 'white';
+          bottomBar.appendChild(final);
+          flying.remove();
+        }, 600);
       });
     });
   </script>
+
 </body>
-</html>
+</html
