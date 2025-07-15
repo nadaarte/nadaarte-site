@@ -4,49 +4,131 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Contact — Nadaarte</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto&display=swap" rel="stylesheet" />
   <style>
+    body {
+      margin: 0;
+      font-family: 'Roboto', sans-serif;
+      background: linear-gradient(to bottom, #fdfdfd, #f6f1eb);
+      color: #333;
+    }
+
     header nav {
-      display: block;
+      display: flex;
+      flex-direction: column;
       padding: 1rem 2rem;
       background: #fff;
-      box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
+
     header nav h1 {
-      font-weight: 700;
+      font-family: 'Playfair Display', serif;
       font-size: 2rem;
-      letter-spacing: -0.05em;
-      cursor: default;
       margin-bottom: 0.5rem;
-      text-align: left;
     }
+
     header nav ul {
       list-style: none;
       display: flex;
       gap: 2rem;
-      margin: 0;
       padding: 0;
+      margin: 0;
     }
+
     header nav ul li a {
       text-decoration: none;
-      color: #222;
-      font-weight: 400;
+      color: #333;
       font-size: 1rem;
       transition: color 0.3s ease;
     }
+
     header nav ul li a:hover {
       color: #b35825;
     }
-    /* 新增样式 */
-    .contact-content {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      box-sizing: border-box;
-      line-height: 1.6;
-      color: #222;
+
+    .contact-section {
+      max-width: 600px;
+      margin: 5rem auto;
+      background: #fff;
+      padding: 3rem;
+      border-radius: 12px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .contact-section h2 {
       font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      text-align: center;
+    }
+
+    .contact-section p {
+      font-size: 1rem;
+      color: #666;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    input, textarea {
+      font-size: 1rem;
+      font-family: 'Roboto', sans-serif;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      transition: border-color 0.3s ease;
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #b35825;
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+
+    button {
+      background: #b35825;
+      color: white;
+      border: none;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: 'Roboto', sans-serif;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #944520;
+    }
+
+    .info {
+      margin-top: 2rem;
+      font-size: 0.95rem;
+      color: #555;
+      text-align: center;
+    }
+
+    .info a {
+      color: #b35825;
+      text-decoration: none;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.875rem;
+      color: #999;
+      border-top: 1px solid #eee;
+      margin-top: 4rem;
     }
   </style>
 </head>
@@ -64,13 +146,21 @@
   </header>
 
   <main>
-    <section class="contact-content">
-      <h2>Contact</h2>
-      <p>You can reach Wenwen Cai at:</p>
-      <ul>
-        <li>Email: <a href="mailto:douwenwen@yahoo.com">douwenwen@yahoo.com</a></li>
-        <li>Based in The Hague, Netherlands & Valencia, Spain</li>
-      </ul>
+    <section class="contact-section">
+      <h2>Let's Connect</h2>
+      <p>Feel free to send a message if you're interested in the artworks or would like to collaborate.</p>
+
+      <form action="mailto:douwenwen@yahoo.com" method="post" enctype="text/plain">
+        <input type="text" name="name" placeholder="Your name" required />
+        <input type="email" name="email" placeholder="Your email" required />
+        <textarea name="message" placeholder="Your message" required></textarea>
+        <button type="submit">Send Email</button>
+      </form>
+
+      <div class="info">
+        Or contact directly via email: <a href="mailto:douwenwen@yahoo.com">douwenwen@yahoo.com</a><br/>
+        Based in The Hague, Netherlands & Valencia, Spain
+      </div>
     </section>
   </main>
 
