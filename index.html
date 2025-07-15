@@ -3,15 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nadaarte</title>
+  <title>Home — Nadaarte</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
   <style>
+    /* 全局基础样式 */
     body {
-      margin: 0;
       font-family: 'Playfair Display', serif;
+      margin: 0;
       background: #fafafa;
-      overflow-x: hidden;
       color: #222;
+      overflow-x: hidden;
+      position: relative;
     }
 
     header {
@@ -24,71 +26,73 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 2rem;
-      background: rgba(255, 255, 255, 0.9);
-      width: 100%;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-      font-size: 1rem; /* 导航字体大小 */
-      text-transform: none; /* 确保无大写 */
+      background: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      font-size: 1rem;
     }
 
+    /* Logo部分 */
     .logo {
       font-weight: 700;
-      font-size: 2rem;      /* 跟其他页面保持一致 */
-      letter-spacing: -0.05em; /* 之前你的间距 */
+      font-size: 2rem;
+      letter-spacing: -0.05em;
       cursor: default;
+      user-select: none;
       display: flex;
       gap: 0.2rem;
-      user-select: none;
-      text-transform: none; /* 取消大写 */
-      color: #000; /* 黑色字体 */
+      color: #000;
+      text-transform: none;
+      position: relative;
+      z-index: 20;
     }
-
     .logo span {
       cursor: pointer;
-      transition: opacity 0.3s ease, transform 2s ease-out;
-      text-transform: none; /* 取消大写 */
       display: inline-block;
+      transition: opacity 0.3s ease, transform 2.5s ease-out;
+      text-transform: none;
+      /* 颜色默认黑 */
+      color: #000;
     }
 
+    /* 导航菜单 */
     nav ul {
       list-style: none;
       display: flex;
       gap: 2rem;
       margin: 0;
       padding: 0;
-      color: #222;
+      align-items: center;
     }
-
     nav ul li a {
       text-decoration: none;
       color: #222;
-      transition: color 0.3s ease;
-      text-transform: none; /* 取消大写 */
       font-weight: 400;
+      transition: color 0.3s ease;
+      text-transform: none;
+      font-size: 1rem;
     }
-
     nav ul li a:hover {
       color: #b35825;
     }
 
+    /* 页面介绍 */
     .intro {
       text-align: center;
       padding: 4rem 2rem 2rem;
     }
-
     .intro h2 {
       font-weight: 700;
       font-size: 1.5rem;
       margin-bottom: 0.5rem;
       color: #444;
     }
-
     .intro p {
       font-weight: 400;
       font-size: 0.875rem;
       color: #aaa;
     }
 
+    /* 画廊 */
     .gallery {
       display: flex;
       gap: 1rem;
@@ -96,7 +100,6 @@
       justify-content: center;
       padding: 1rem 2rem 4rem;
     }
-
     .art-image {
       width: 380px;
       height: 200px;
@@ -106,11 +109,11 @@
       cursor: pointer;
       transition: transform 0.3s ease;
     }
-
     .art-image:hover {
       transform: scale(1.03);
     }
 
+    /* 弹窗灯箱 */
     .lightbox {
       position: fixed;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -122,18 +125,15 @@
       flex-direction: column;
       padding: 1rem;
     }
-
     .lightbox.active {
       display: flex;
     }
-
     .lightbox img {
       max-width: 90vw;
       max-height: 70vh;
       border-radius: 8px;
       box-shadow: 0 6px 12px rgba(0,0,0,0.5);
     }
-
     .lightbox .description {
       margin-top: 1rem;
       color: #fff;
@@ -143,7 +143,6 @@
       font-weight: 600;
       font-family: 'Playfair Display', serif;
     }
-
     .lightbox .close-btn {
       position: absolute;
       top: 1rem;
@@ -159,12 +158,12 @@
       height: 36px;
       line-height: 36px;
       text-align: center;
+      z-index: 10000;
     }
 
+    /* 掉落的字母样式 */
     .fallen-letter {
       position: absolute;
-      top: 0;
-      left: 0;
       font-weight: 700;
       font-family: 'Playfair Display', serif;
       pointer-events: none;
@@ -172,9 +171,11 @@
       font-size: 1rem;
       transform-origin: center;
       transition: transform 2.5s ease-out, opacity 2.5s ease-out;
-      z-index: 5;
+      z-index: 15;
+      will-change: transform, opacity;
     }
 
+    /* 底部footer */
     footer {
       text-align: center;
       padding: 2rem;
@@ -205,9 +206,7 @@
       <p>By Wenwen Cai</p>
     </section>
 
-    <section class="gallery" id="gallery">
-      <!-- 图片由JS插入 -->
-    </section>
+    <section class="gallery" id="gallery"></section>
   </main>
 
   <div class="lightbox" id="lightbox">
@@ -263,13 +262,15 @@
       }
     });
 
-    // Nadaarte 字母掉落动画
+    // Nadaarte 字母掉落动画实现
     const logo = document.getElementById('logo');
-    logo.querySelectorAll('span').forEach(letter => {
+    const colors = ['red', 'yellow', 'deepskyblue']; // 三原色，天蓝色为 deepskyblue
+
+    logo.querySelectorAll('span').forEach((letter, idx) => {
       letter.addEventListener('click', () => {
+        // 设置动画字母样式及位置
         const rect = letter.getBoundingClientRect();
         const clone = letter.cloneNode(true);
         clone.classList.add('fallen-letter');
-        clone.style.left = `${rect.left}px`;
-        clone.style.top = `${rect.top}px`;
-        clone.style.color = ['red', '#00a
+
+        // 设置位置为相对视口左上角位置
