@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nadaarte Logo Effect</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nadaarte Drop Logo</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     * {
@@ -14,23 +14,22 @@
       margin: 0;
       font-family: 'Playfair Display', serif;
       background-color: #fafafa;
-      color: #222;
+      overflow-x: hidden;
     }
 
-    /* 顶部透明色条 */
+    /* 顶部 logo 栏 */
     #logo-bar {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
-      background: rgba(255, 255, 255, 0.7);
-      padding: 1rem 0;
+      background: rgba(255, 255, 255, 0.85);
+      padding: 1rem;
       text-align: center;
       z-index: 1000;
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(5px);
     }
 
-    /* Logo 字母样式 */
     #logo {
       font-size: 2.2rem;
       font-weight: 700;
@@ -38,6 +37,7 @@
       user-select: none;
       display: inline-flex;
       gap: 0.1em;
+      color: black;
     }
 
     #logo span {
@@ -45,108 +45,93 @@
       transition: opacity 0.3s ease;
     }
 
-    /* 底部接收区 */
-    #bottom-letters {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background: #111;
-      color: white;
-      font-size: 2rem;
+    /* 掉落字母样式 */
+    .fallen-letter {
+      position: absolute;
+      font-size: 2.2rem;
       font-weight: 700;
-      display: flex;
-      justify-content: center;
-      gap: 0.1em;
-      padding: 1rem 0;
-      z-index: 1000;
-      user-select: none;
+      color: black;
+      opacity: 1;
+      pointer-events: none;
+      z-index: 500;
+      transition: transform 0.6s ease, opacity 0.6s ease;
     }
 
-    /* 飞行中的字母动画 */
-    .floating-letter {
-      position: fixed;
-      font-size: 2rem;
-      font-weight: 700;
-      z-index: 9999;
-      pointer-events: none;
-      transition: all 0.6s ease;
+    /* 页面内容模拟图片区域 */
+    main {
+      padding-top: 100px;
+      min-height: 1500px;
+      position: relative;
+    }
+
+    .image-placeholder {
+      width: 90%;
+      max-width: 800px;
+      height: 400px;
+      margin: 3rem auto;
+      background: linear-gradient(135deg, #ccc, #eee);
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
     }
   </style>
 </head>
 <body>
 
-  <!-- 顶部透明色条与 logo -->
+  <!-- 顶部 Logo -->
   <div id="logo-bar">
     <div id="logo" aria-label="Nadaarte logo">
-      <!-- 每个字母用 span 包裹，并赋予颜色 -->
-      <span style="color: red;">N</span>
-      <span style="color: yellow;">a</span>
-      <span style="color: blue;">d</span>
-      <span style="color: red;">a</span>
-      <span style="color: yellow;">a</span>
-      <span style="color: blue;">r</span>
-      <span style="color: red;">t</span>
-      <span style="color: yellow;">e</span>
+      <span>N</span><span>a</span><span>d</span><span>a</span><span>a</span><span>r</span><span>t</span><span>e</span>
     </div>
   </div>
 
-  <!-- 页面内容填充 -->
-  <main style="padding-top: 120px; text-align: center;">
-    <h2>Welcome to Nadaarte</h2>
-    <p>Click the letters in the logo to drop them down into the bottom bar.</p>
-    <p style="color:#999; font-size: 0.9rem;">Inspired by KABK's interactive identity</p>
+  <!-- 页面内容（可替换为画廊） -->
+  <main>
+    <div class="image-placeholder"></div>
+    <div class="image-placeholder"></div>
+    <div class="image-placeholder"></div>
   </main>
 
-  <!-- 底部字母容器 -->
-  <div id="bottom-letters" aria-live="polite" aria-atomic="true"></div>
-
   <script>
-    const logo = document.getElementById('logo');
-    const bottomBar = document.getElementById('bottom-letters');
+    const logoSpans = document.querySelectorAll('#logo span');
+    const main = document.querySelector('main');
 
-    const letters = Array.from(logo.querySelectorAll('span'));
-
-    letters.forEach((span, index) => {
+    logoSpans.forEach(span => {
       span.addEventListener('click', () => {
-        if (span.style.opacity === '0') return; // already gone
+        if (span.style.opacity === '0') return;
 
         const rect = span.getBoundingClientRect();
+        const letter = span.textContent;
 
-        // 创建一个飞行动画字母
-        const flying = document.createElement('span');
-        flying.classList.add('floating-letter');
-        flying.textContent = span.textContent;
-        flying.style.color = span.style.color;
-        flying.style.left = `${rect.left}px`;
-        flying.style.top = `${rect.top}px`;
-        document.body.appendChild(flying);
+        const clone = document.createElement('span');
+        clone.className = 'fallen-letter';
+        clone.textContent = letter;
+        clone.style.left = `${rect.left}px`;
+        clone.style.top = `${rect.top}px`;
 
-        // 隐藏原来的字母
+        document.body.appendChild(clone);
+
+        // 隐藏顶部字母
         span.style.opacity = '0';
 
-        // 计算目标位置（bottomBar 居中 + 当前已有字母偏移）
-        const bottomRect = bottomBar.getBoundingClientRect();
-        const targetLeft = bottomRect.left + bottomBar.children.length * 24 + 10;
-        const targetTop = bottomRect.top + 10;
+        // 获取 main 区域范围
+        const mainRect = main.getBoundingClientRect();
+        const targetX = Math.random() * (window.innerWidth - 50); // 随机水平位置
+        const targetY = mainRect.top + Math.random() * (main.offsetHeight - 200); // 随机竖直位置
 
-        // 触发动画
+        // 强制渲染，开始动画
         requestAnimationFrame(() => {
-          flying.style.left = `${targetLeft}px`;
-          flying.style.top = `${targetTop}px`;
+          clone.style.transform = `translate(${targetX - rect.left}px, ${targetY - rect.top}px)`;
         });
 
-        // 动画结束后将字母加入 bottomBar
+        // 固定位置后，移除 transform
         setTimeout(() => {
-          const final = document.createElement('span');
-          final.textContent = span.textContent;
-          final.style.color = 'white';
-          bottomBar.appendChild(final);
-          flying.remove();
+          clone.style.transform = 'none';
+          clone.style.left = `${targetX}px`;
+          clone.style.top = `${targetY}px`;
         }, 600);
       });
     });
   </script>
 
 </body>
-</html
+</html>
