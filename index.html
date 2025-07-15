@@ -17,30 +17,27 @@
     header nav {
       display: flex;
       justify-content: space-between;
-      align-items: flex-end;
-      padding: 1.5rem 2rem 1rem;
-      background: rgba(255, 255, 255, 0.85);
-      backdrop-filter: blur(4px);
+      align-items: center;
+      padding: 1rem 2rem;
+      background: rgba(255, 255, 255, 0.9);
       box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
-      position: fixed;
-      width: 100%;
-      top: 0;
-      z-index: 999;
+      position: relative;
+      z-index: 10;
     }
 
-    /* clickable logo */
     #logo {
       font-weight: 700;
       font-size: 2rem;
-      letter-spacing: -0.03em;
-      display: inline-flex;
+      letter-spacing: -0.05em;
+      cursor: pointer;
+      margin: 0;
+      display: flex;
       gap: 0.05em;
-      cursor: default;
     }
 
     #logo span {
-      cursor: pointer;
       transition: opacity 0.3s ease;
+      display: inline-block;
     }
 
     nav ul {
@@ -61,10 +58,6 @@
 
     nav ul li a:hover {
       color: #b35825;
-    }
-
-    main {
-      padding-top: 120px;
     }
 
     .intro {
@@ -92,6 +85,7 @@
       justify-content: center;
       padding: 1rem 2rem 4rem;
       position: relative;
+      z-index: 1;
     }
 
     .art-image {
@@ -138,6 +132,7 @@
       text-align: center;
       max-width: 90vw;
       font-weight: 600;
+      font-family: 'Playfair Display', serif;
     }
 
     .lightbox .close-btn {
@@ -157,18 +152,6 @@
       text-align: center;
     }
 
-    .fallen-letter {
-      position: absolute;
-      font-size: 2rem;
-      font-weight: 700;
-      color: black;
-      opacity: 1;
-      pointer-events: none;
-      z-index: 900;
-      transition: transform 0.6s ease, opacity 0.6s ease;
-      font-family: 'Playfair Display', serif;
-    }
-
     footer {
       text-align: center;
       padding: 2rem;
@@ -176,11 +159,20 @@
       color: #999;
       border-top: 1px solid #eee;
     }
+
+    .fallen-letter {
+      position: absolute;
+      font-size: 4rem;
+      font-weight: 700;
+      opacity: 0.5;
+      pointer-events: none;
+      z-index: 1000;
+      font-family: 'Playfair Display', serif;
+      transition: transform 1s ease-out, opacity 1s ease-out;
+    }
   </style>
 </head>
 <body>
-
-  <!-- header -->
   <header>
     <nav>
       <h1 id="logo">
@@ -201,10 +193,11 @@
       <p>By Wenwen Cai</p>
     </section>
 
-    <section class="gallery" id="gallery"></section>
+    <section class="gallery" id="gallery">
+      <!-- Gallery images inserted here -->
+    </section>
   </main>
 
-  <!-- lightbox -->
   <div class="lightbox" id="lightbox">
     <span class="close-btn" id="lightboxClose">&times;</span>
     <img id="lightboxImage" src="" alt="Large artwork" />
@@ -216,13 +209,33 @@
   </footer>
 
   <script>
-    // 图片画廊
+    // Gallery images
     const galleryData = [
-      { src: "010.jpg", alt: "Artwork 1", description: "Lanzarote Oil Painting – 2022, 70×50cm" },
-      { src: "008.jpg", alt: "Artwork 2", description: "Almeria Oil Painting – 2022, 70×50cm" },
-      { src: "004.jpg", alt: "Artwork 3", description: "Frida Oil Painting – 2022, 50×70cm" },
-      { src: "006.jpg", alt: "Artwork 4", description: "Santander Oil Painting – 2022, 70×50cm" },
-      { src: "002.jpg", alt: "Artwork 5", description: "David Bowie Oil Painting – 2022, 50×70cm" }
+      {
+        src: "010.jpg",
+        alt: "Artwork 1",
+        description: "Lanzarote Oil Painting – 2022, 70×50cm"
+      },
+      {
+        src: "008.jpg",
+        alt: "Artwork 2",
+        description: "Almeria Oil Painting – 2022, 70×50cm"
+      },
+      {
+        src: "004.jpg",
+        alt: "Artwork 3",
+        description: "Frida Oil Painting – 2022, 50×70cm"
+      },
+      {
+        src: "006.jpg",
+        alt: "Artwork 4",
+        description: "Santander Oil Painting – 2022, 70×50cm"
+      },
+      {
+        src: "002.jpg",
+        alt: "Artwork 5",
+        description: "David Bowie Oil Painting – 2022, 50×70cm"
+      }
     ];
 
     const gallery = document.getElementById('gallery');
@@ -259,13 +272,10 @@
       }
     });
 
-    // Logo 字母点击掉落动画
+    // Letter fall animation
     const logoSpans = document.querySelectorAll('#logo span');
-
     logoSpans.forEach(span => {
-      span.addEventListener('click', () => {
-        if (span.style.opacity === '0') return;
-
+      span.addEventListener('click', (e) => {
         const rect = span.getBoundingClientRect();
         const letter = span.textContent;
 
@@ -275,22 +285,22 @@
         clone.style.left = `${rect.left}px`;
         clone.style.top = `${rect.top}px`;
 
+        const colors = ['red', 'yellow', 'blue'];
+        const color = colors[Math.floor(Math.random() * colors.length)];
+        clone.style.color = color;
+
         document.body.appendChild(clone);
         span.style.opacity = '0';
 
-        const galleryRect = gallery.getBoundingClientRect();
-        const targetX = Math.random() * (window.innerWidth - 50);
-        const targetY = galleryRect.top + Math.random() * (gallery.offsetHeight - 100);
-
-        requestAnimationFrame(() => {
-          clone.style.transform = `translate(${targetX - rect.left}px, ${targetY - rect.top}px)`;
-        });
+        setTimeout(() => {
+          const dropY = window.innerHeight / 2 + Math.random() * 300;
+          clone.style.transform = `translateY(${dropY}px)`;
+          clone.style.opacity = '0.5';
+        }, 10);
 
         setTimeout(() => {
-          clone.style.transform = 'none';
-          clone.style.left = `${targetX}px`;
-          clone.style.top = `${targetY}px`;
-        }, 600);
+          clone.remove();
+        }, 2000);
       });
     });
   </script>
