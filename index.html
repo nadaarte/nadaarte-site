@@ -11,52 +11,41 @@
       margin: 0;
       background: #fafafa;
       color: #222;
-      overflow-x: hidden;
     }
 
     header nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
+      display: block;
       padding: 1rem 2rem;
       background: #fff;
       box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
-      position: relative;
-      z-index: 100;
     }
 
-    /* Logo 拆成 span 实现点击动画 */
-    #logo {
-      display: flex;
-      gap: 0.05em;
+    header nav h1 {
       font-weight: 700;
       font-size: 2rem;
       letter-spacing: -0.05em;
       cursor: default;
-      user-select: none;
-    }
-    #logo span {
-      display: inline-block;
-      cursor: pointer;
-      user-select: none;
+      margin-bottom: 0.5rem;
+      text-align: left;
     }
 
-    nav ul {
+    header nav ul {
       list-style: none;
       display: flex;
       gap: 2rem;
       margin: 0;
       padding: 0;
     }
-    nav ul li a {
+
+    header nav ul li a {
       text-decoration: none;
       color: #222;
       font-weight: 400;
       font-size: 1rem;
-      cursor: pointer;
-      user-select: none;
+      transition: color 0.3s ease;
     }
-    nav ul li a:hover {
+
+    header nav ul li a:hover {
       color: #b35825;
     }
 
@@ -64,12 +53,14 @@
       text-align: center;
       padding: 4rem 2rem 2rem;
     }
+
     .intro h2 {
       font-weight: 700;
       font-size: 1.5rem;
       margin-bottom: 0.5rem;
       color: #444;
     }
+
     .intro p {
       font-weight: 400;
       font-size: 0.875rem;
@@ -83,6 +74,7 @@
       justify-content: center;
       padding: 1rem 2rem 4rem;
     }
+
     .art-image {
       width: 380px;
       height: 200px;
@@ -92,6 +84,7 @@
       cursor: pointer;
       transition: transform 0.3s ease;
     }
+
     .art-image:hover {
       transform: scale(1.03);
     }
@@ -107,15 +100,18 @@
       flex-direction: column;
       padding: 1rem;
     }
+
     .lightbox.active {
       display: flex;
     }
+
     .lightbox img {
       max-width: 90vw;
       max-height: 70vh;
       border-radius: 8px;
       box-shadow: 0 6px 12px rgba(0,0,0,0.5);
     }
+
     .lightbox .description {
       margin-top: 1rem;
       color: #fff;
@@ -125,6 +121,7 @@
       font-weight: 600;
       font-family: 'Playfair Display', serif;
     }
+
     .lightbox .close-btn {
       position: absolute;
       top: 1rem;
@@ -142,6 +139,7 @@
       text-align: center;
     }
 
+    /* ✅ 新增 footer 样式 */
     footer {
       text-align: center;
       padding: 2rem;
@@ -149,31 +147,17 @@
       color: #999;
       border-top: 1px solid #eee;
     }
-
-    /* 掉落动画字母CSS */
-    .falling-letter {
-      position: fixed;
-      font-weight: 700;
-      font-size: 2rem;
-      opacity: 0.5;
-      pointer-events: none;
-      transform-origin: center;
-      user-select: none;
-      z-index: 1000;
-    }
   </style>
 </head>
 <body>
   <header>
     <nav>
-      <div id="logo">
-        <span>N</span><span>a</span><span>d</span><span>a</span><span>a</span><span>r</span><span>t</span><span>e</span>
-      </div>
+      <h1>Nadaarte</h1>
       <ul>
-        <li><a href="index.html"><span>Home</span></a></li>
-        <li><a href="gallery.html"><span>Gallery</span></a></li>
-        <li><a href="about.html"><span>About</span></a></li>
-        <li><a href="contact.html"><span>Contact</span></a></li>
+        <li><a href="index.html" aria-current="page">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">contact</a></li>
       </ul>
     </nav>
   </header>
@@ -184,7 +168,9 @@
       <p>By Wenwen Cai</p>
     </section>
 
-    <section class="gallery" id="gallery"></section>
+    <section class="gallery" id="gallery">
+      <!-- Images inserted by JS -->
+    </section>
   </main>
 
   <div class="lightbox" id="lightbox">
@@ -199,11 +185,31 @@
 
   <script>
     const galleryData = [
-      { src: "010.jpg", alt: "Artwork 1", description: "Lanzarote Oil Painting – 2022, 70×50cm" },
-      { src: "008.jpg", alt: "Artwork 2", description: "Almeria Oil Painting – 2022, 70×50cm" },
-      { src: "004.jpg", alt: "Artwork 3", description: "Frida Oil Painting – 2022, 50×70cm" },
-      { src: "006.jpg", alt: "Artwork 4", description: "Santander Oil Painting – 2022, 70×50cm" },
-      { src: "002.jpg", alt: "Artwork 5", description: "David Bowie Oil Painting – 2022, 50×70cm" }
+      {
+        src: "010.jpg",
+        alt: "Artwork 1",
+        description: "Lanzarote Oil Painting – 2022, 70×50cm"
+      },
+      {
+        src: "008.jpg",
+        alt: "Artwork 2",
+        description: "Almeria Oil Painting – 2022, 70×50cm"
+      },
+      {
+        src: "004.jpg",
+        alt: "Artwork 3",
+        description: "Frida Oil Painting – 2022, 50×70cm"
+      },
+      {
+        src: "006.jpg",
+        alt: "Artwork 4",
+        description: "Santander Oil Painting – 2022, 70×50cm"
+      },
+      {
+        src: "002.jpg",
+        alt: "Artwork 5",
+        description: "David Bowie Oil Painting – 2022, 50×70cm"
+      }
     ];
 
     const gallery = document.getElementById('gallery');
@@ -212,11 +218,12 @@
     const lightboxDescription = document.getElementById('lightboxDescription');
     const lightboxClose = document.getElementById('lightboxClose');
 
-    galleryData.forEach(item => {
+    galleryData.forEach((item, index) => {
       const img = document.createElement('img');
       img.src = item.src;
       img.alt = item.alt;
       img.className = 'art-image';
+      img.dataset.index = index;
       img.addEventListener('click', () => {
         lightboxImage.src = item.src;
         lightboxDescription.textContent = item.description;
@@ -227,51 +234,17 @@
 
     lightboxClose.addEventListener('click', () => {
       lightbox.classList.remove('active');
-    });
-    lightbox.addEventListener('click', e => {
-      if (e.target === lightbox) lightbox.classList.remove('active');
-    });
-
-    const colors = ['#d73027', '#f7b732', '#4da6ff'];
-
-    function dropElement(el, text, href) {
-      const rect = el.getBoundingClientRect();
-      const span = document.createElement('div');
-      span.className = 'falling-letter';
-      span.textContent = text;
-      span.style.left = rect.left + 'px';
-      span.style.top = rect.top + 'px';
-      span.style.color = colors[Math.floor(Math.random() * colors.length)];
-
-      document.body.appendChild(span);
-
-      const dx = (Math.random() - 0.5) * 200;
-      const dy = window.innerHeight + 200;
-      const rot = (Math.random() - 0.5) * 720;
-
-      span.animate([
-        { transform: 'translate(0,0) scale(1) rotate(0deg)', opacity: 0.5 },
-        { transform: `translate(${dx}px,${dy}px) scale(6) rotate(${rot}deg)`, opacity: 0 }
-      ], { duration: 3000, easing: 'ease-in', fill: 'forwards' });
-
-      setTimeout(() => {
-        span.remove();
-        if (href) window.location.href = href;
-      }, 3000);
-    }
-
-    document.querySelectorAll('#logo span').forEach(span => {
-      span.addEventListener('click', e => {
-        dropElement(e.target, e.target.textContent, null);
-      });
+      lightboxImage.src = '';
+      lightboxDescription.textContent = '';
     });
 
-    document.querySelectorAll('nav ul li a span').forEach(span => {
-      span.addEventListener('click', e => {
-        const href = e.target.parentElement.href;
-        dropElement(e.target, e.target.textContent, href);
-      });
+    lightbox.addEventListener('click', (e) => {
+      if(e.target === lightbox) {
+        lightbox.classList.remove('active');
+        lightboxImage.src = '';
+        lightboxDescription.textContent = '';
+      }
     });
   </script>
 </body>
-</html>
+</html> 
