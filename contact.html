@@ -3,79 +3,108 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Contact — Nadaarte</title>
+  <title>Inquire — Nadaarte</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="style.css" />
   <style>
-    header nav {
-      display: block;
-      padding: 1rem 2rem;
-      background: #fff;
-      box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
-    }
-    header nav h1 {
-      font-weight: 700;
-      font-size: 2rem;
-      letter-spacing: -0.05em;
-      cursor: default;
-      margin-bottom: 0.5rem;
-      text-align: left;
-    }
-    header nav ul {
-      list-style: none;
-      display: flex;
-      gap: 2rem;
-      margin: 0;
-      padding: 0;
-    }
-    header nav ul li a {
-      text-decoration: none;
-      color: #222;
-      font-weight: 400;
-      font-size: 1rem;
-      transition: color 0.3s ease;
-    }
-    header nav ul li a:hover {
-      color: #b35825;
-    }
-    /* 新增样式 */
-    .contact-content {
-      max-width: 900px;
-      margin: 0 auto;
-      padding: 0 1.5rem;
-      box-sizing: border-box;
-      line-height: 1.6;
-      color: #222;
+    body {
       font-family: 'Playfair Display', serif;
+      margin: 0;
+      background: #fafafa;
+      color: #222;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.125rem;
+      color: #555;
+      max-width: 500px;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    form {
+      width: 100%;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    input, textarea {
+      padding: 0.75rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      background-color: #b35825;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'Playfair Display', serif;
+    }
+
+    button:hover {
+      background-color: #92451c;
+    }
+
+    .location-note {
+      margin-top: 1.5rem;
+      font-size: 1rem;
+      color: #777;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.875rem;
+      color: #999;
+      border-top: 1px solid #eee;
+      margin-top: 3rem;
     }
   </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <h1>Nadaarte</h1>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="gallery.html">Gallery</a></li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html" aria-current="page">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
 
-  <main>
-    <section class="contact-content">
-      <h2>Contact</h2>
-      <p>You can reach Wenwen Cai at:</p>
-      <ul>
-        <li>Email: <a href="mailto:douwenwen@yahoo.com">douwenwen@yahoo.com</a></li>
-        <li>Based in The Hague, Netherlands & Valencia, Spain</li>
-      </ul>
-    </section>
-  </main>
+  <h1>Inquire</h1>
+  <p>To learn more about Nadaarte’s artworks, please provide your contact information.</p>
+
+  <form action="mailto:douwenwen@yahoo.com" method="post" enctype="text/plain">
+    <input type="text" name="name" placeholder="Your Name" required />
+    <input type="email" name="email" placeholder="Your Email" required />
+    <input type="text" name="phone" placeholder="Phone (optional)" />
+    <textarea name="message" placeholder="Your Message"></textarea>
+    <button type="submit">Submit</button>
+  </form>
+
+  <div class="location-note">
+    I live in The Hague (Netherlands) & Valencia (Spain).
+  </div>
 
   <footer>
     <p>&copy; 2025 Nadaarte. All rights reserved.</p>
   </footer>
+
 </body>
 </html>
