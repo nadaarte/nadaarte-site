@@ -11,20 +11,13 @@
       margin: 0;
       background: #fafafa;
       color: #222;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      padding: 2rem;
     }
 
     header nav {
       display: block;
       padding: 1rem 2rem;
       background: #fff;
-      box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
-      width: 100%;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
 
     header nav h1 {
@@ -46,65 +39,51 @@
       font-size: 1rem;
     }
 
-    header nav ul li a:hover {
+    header nav ul li a:hover,
+    header nav ul li a[aria-current="page"] {
       color: #b35825;
+      font-weight: 700;
     }
 
-    h1 {
-      font-size: 2.5rem;
+    main {
+      padding: 4rem 2rem;
+      text-align: center;
+    }
+
+    h2 {
+      font-size: 1.5rem;
       margin-bottom: 1rem;
     }
 
-    p {
-      font-size: 1.125rem;
-      color: #555;
-      max-width: 500px;
-      text-align: center;
-      margin-bottom: 2rem;
-    }
-
     form {
-      width: 100%;
-      max-width: 500px;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+      max-width: 400px;
+      margin: 0 auto;
     }
 
     input, textarea {
+      width: 100%;
       padding: 0.75rem;
+      margin-bottom: 1rem;
+      font-family: 'Playfair Display', serif;
       font-size: 1rem;
       border: 1px solid #ccc;
       border-radius: 4px;
-      font-family: 'Playfair Display', serif;
-    }
-
-    textarea {
-      min-height: 100px;
-      resize: vertical;
     }
 
     button {
-      padding: 0.75rem 1.5rem;
-      font-size: 1rem;
+      padding: 0.75rem 2rem;
       background-color: #b35825;
       color: white;
       border: none;
+      font-size: 1rem;
       border-radius: 4px;
       cursor: pointer;
-      font-family: 'Playfair Display', serif;
     }
 
-    button:hover {
-      background-color: #92451c;
-    }
-
-    .location-note {
+    .note {
+      font-size: 0.875rem;
+      color: #666;
       margin-top: 1.5rem;
-      font-size: 0.9rem;
-      color: #777;
-      text-align: center;
-      white-space: nowrap;
     }
 
     footer {
@@ -113,13 +92,10 @@
       font-size: 0.875rem;
       color: #999;
       border-top: 1px solid #eee;
-      margin-top: 3rem;
-      width: 100%;
     }
   </style>
 </head>
 <body>
-
   <header>
     <nav>
       <h1>Nadaarte</h1>
@@ -133,25 +109,21 @@
   </header>
 
   <main>
-    <h1>Inquire</h1>
-    <p>To learn more about Nadaarte’s artworks, please provide your contact information.</p>
+    <h2>Inquire</h2>
+    <p>To learn more about my work, please provide your contact information below.</p>
 
-    <form action="mailto:douwenwen@yahoo.com" method="post" enctype="text/plain">
+    <form action="mailto:douwenwen@yahoo.com" method="POST" enctype="text/plain">
       <input type="text" name="name" placeholder="Your Name" required />
       <input type="email" name="email" placeholder="Your Email" required />
-      <input type="text" name="phone" placeholder="Phone (optional)" />
-      <textarea name="message" placeholder="Your Message"></textarea>
-      <button type="submit">Submit</button>
+      <textarea name="message" rows="5" placeholder="Your Message"></textarea>
+      <button type="submit">Send</button>
     </form>
 
-    <div class="location-note">
-      I live in The Hague (Netherlands) & Valencia (Spain).
-    </div>
+    <p class="note">I live in The Hague (Netherlands) & Valencia (Spain).</p>
   </main>
 
   <footer>
     <p>&copy; 2025 Nadaarte. All rights reserved.</p>
   </footer>
-
 </body>
 </html>
