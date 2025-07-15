@@ -11,13 +11,20 @@
       margin: 0;
       background: #fafafa;
       color: #222;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 2rem;
     }
 
     header nav {
       display: block;
       padding: 1rem 2rem;
       background: #fff;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+      width: 100%;
     }
 
     header nav h1 {
@@ -43,23 +50,61 @@
       color: #b35825;
     }
 
-    main {
-      padding: 4rem 2rem;
-      max-width: 600px;
-      margin: 0 auto;
-      text-align: center;
-    }
-
-    main h2 {
-      font-size: 1.5rem;
-      font-weight: 700;
+    h1 {
+      font-size: 2.5rem;
       margin-bottom: 1rem;
     }
 
-    main p {
+    p {
+      font-size: 1.125rem;
+      color: #555;
+      max-width: 500px;
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+
+    form {
+      width: 100%;
+      max-width: 500px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    input, textarea {
+      padding: 0.75rem;
       font-size: 1rem;
-      color: #444;
-      line-height: 1.6;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-family: 'Playfair Display', serif;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    button {
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      background-color: #b35825;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: 'Playfair Display', serif;
+    }
+
+    button:hover {
+      background-color: #92451c;
+    }
+
+    .location-note {
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: #777;
+      text-align: center;
+      white-space: nowrap;
     }
 
     footer {
@@ -68,6 +113,8 @@
       font-size: 0.875rem;
       color: #999;
       border-top: 1px solid #eee;
+      margin-top: 3rem;
+      width: 100%;
     }
   </style>
 </head>
@@ -86,10 +133,20 @@
   </header>
 
   <main>
-    <h2>Inquire</h2>
-    <p>To learn more about the artist, please provide your contact information.</p>
-    <p>I live in The Hague (Netherlands) & Valencia (Spain).</p>
-    <p>Email: <a href="mailto:douwenwen@yahoo.com">douwenwen@yahoo.com</a></p>
+    <h1>Inquire</h1>
+    <p>To learn more about Nadaarte’s artworks, please provide your contact information.</p>
+
+    <form action="mailto:douwenwen@yahoo.com" method="post" enctype="text/plain">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <input type="text" name="phone" placeholder="Phone (optional)" />
+      <textarea name="message" placeholder="Your Message"></textarea>
+      <button type="submit">Submit</button>
+    </form>
+
+    <div class="location-note">
+      I live in The Hague (Netherlands) & Valencia (Spain).
+    </div>
   </main>
 
   <footer>
