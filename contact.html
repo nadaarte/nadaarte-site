@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>contact — Nadaarte</title>
+  <title>Contact — Nadaarte</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -24,7 +24,6 @@
       font-weight: 700;
       font-size: 2rem;
       letter-spacing: -0.05em;
-      cursor: default;
       margin-bottom: 0.5rem;
       text-align: left;
     }
@@ -50,80 +49,64 @@
     }
 
     main {
-      width: 100%;
-      max-width: 600px;
-      margin: 3rem auto 4rem;
-      padding: 0 1rem;
+      padding: 4rem 2rem;
+      text-align: center;
     }
 
-    h2 {
-      font-weight: 700;
-      font-size: 25px;
+    main h2 {
+      font-size: 1.75rem;
       margin-bottom: 1rem;
-      color: #777;
-      text-align: center;
-    }
-
-    p {
-      font-weight: 400;
-      font-size: 1rem;
-      color: #555;
-      text-align: center;
-      margin-bottom: 2rem;
+      font-weight: 700;
+      color: #444;
     }
 
     form {
       display: flex;
       flex-direction: column;
-      gap: 1rem;
       align-items: center;
+      margin-top: 2rem;
     }
 
-    label {
-      font-weight: 600;
-      font-size: 1rem;
-      color: #333;
-      align-self: flex-start;
-      margin-left: calc(50% - 190px); /* align with 380px input */
-    }
-
-    input[type="text"],
-    input[type="email"] {
+    form label {
+      text-align: left;
       width: 380px;
-      padding: 0.5rem 0.75rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-family: 'Playfair Display', serif;
       font-size: 1rem;
+      margin-bottom: 0.25rem;
     }
 
-    textarea {
+    form input[type="text"],
+    form input[type="email"],
+    form textarea {
       width: 380px;
-      padding: 0.5rem 0.75rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-family: 'Playfair Display', serif;
+      padding: 0.75rem;
       font-size: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-family: 'Playfair Display', serif;
+    }
+
+    form textarea {
+      height: 120px;
       resize: vertical;
-      min-height: 80px; /* 👈 已改为 80px */
     }
 
-    button {
-      background-color: #b35825;
+    form button {
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
       color: white;
+      background-color: #b35825;
       border: none;
-      padding: 0.6rem;
-      font-size: 0.9rem;
-      border-radius: 6px;
+      border-radius: 4px;
       cursor: pointer;
-      transition: background-color 0.3s ease;
-      font-family: 'Playfair Display', serif;
-      font-weight: 700;
-      width: 200px;
+      transition: background 0.3s ease;
     }
 
-    button:hover {
-      background-color: #8a4115;
+    form button:hover {
+      background-color: #94461d;
     }
 
     footer {
@@ -132,44 +115,41 @@
       font-size: 0.875rem;
       color: #999;
       border-top: 1px solid #eee;
+      margin-top: 4rem;
     }
   </style>
 </head>
 <body>
+  <header>
+    <nav>
+      <h1>Nadaarte</h1>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<header>
-  <nav>
-    <h1>Nadaarte</h1>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="contact.html" aria-current="page">contact</a></li>
-    </ul>
-  </nav>
-</header>
+  <main>
+    <h2>Contact Me</h2>
+    <form>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required />
 
-<main>
-  <h2>Contact Wenwen Cai</h2>
-  <p>If you’d like to get in touch, please fill out the form below or send an email to <a href="mailto:douwenwen@yahoo.com">douwenwen@yahoo.com</a>.</p>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
 
-  <form action="mailto:douwenwen@yahoo.com" method="POST" enctype="text/plain">
-    <label for="name">Name</label>
-    <input id="name" name="Name" type="text" required />
+      <label for="message">Message</label>
+      <textarea id="message" name="message" required></textarea>
 
-    <label for="email">Email</label>
-    <input id="email" name="Email" type="email" required />
+      <button type="submit">Send</button>
+    </form>
+  </main>
 
-    <label for="message">Message</label>
-    <textarea id="message" name="Message" required></textarea>
-
-    <button type="submit">Send Message</button>
-  </form>
-</main>
-
-<footer>
-  <p>&copy; 2025 Nadaarte. All rights reserved.</p>
-</footer>
-
+  <footer>
+    <p>&copy; 2025 Nadaarte. All rights reserved.</p>
+  </footer>
 </body>
 </html>
