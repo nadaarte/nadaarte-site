@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Home — Nadaarte</title>
+  <title>Contact — Nadaarte</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -24,7 +24,6 @@
       font-weight: 700;
       font-size: 2rem;
       letter-spacing: -0.05em;
-      cursor: default;
       margin-bottom: 0.5rem;
       text-align: left;
     }
@@ -42,49 +41,82 @@
       color: #222;
       font-weight: 400;
       font-size: 1rem;
-      transition: color 0.3s ease, background-color 0.3s ease;
-      padding: 0.2rem 0.4rem;
-      border-radius: 4px;
-      cursor: pointer;
-      user-select: none;
+      transition: color 0.3s ease;
     }
 
     header nav ul li a:hover {
       color: #b35825;
     }
 
-    .nav-link.clicked-once {
-      background-color: #eee;
+    main {
+      padding: 4rem 2rem;
+      text-align: center;
     }
 
-    .nav-link.clicked-twice {
-      background-color: #fff;
+    main h2 {
+      font-size: 1.75rem;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      color: #444;
     }
 
-    .falling-word {
-      position: absolute;
-      font-size: 6rem;
-      font-weight: bold;
-      color: rgba(255, 255, 255, 0.5);
-      pointer-events: none;
-      animation: fallAndRotate 2s ease-out forwards;
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 2rem;
+    }
+
+    form label {
+      text-align: left;
+      width: 380px;
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    form input[type="text"],
+    form input[type="email"],
+    form textarea {
+      width: 380px;
+      padding: 0.75rem;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
       font-family: 'Playfair Display', serif;
-      white-space: nowrap;
-      z-index: 9999;
     }
 
-    @keyframes fallAndRotate {
-      0% {
-        transform: translateY(0px) rotate(0deg);
-        opacity: 1;
-      }
-      100% {
-        transform: translateY(500px) rotate(360deg);
-        opacity: 1;
-      }
+    form textarea {
+      height: 120px;
+      resize: vertical;
     }
 
-    /* 其他样式省略，可以保留你原来的 */
+    form button {
+      margin-top: 1rem;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      font-weight: 600;
+      color: white;
+      background-color: #b35825;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    form button:hover {
+      background-color: #94461d;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.875rem;
+      color: #999;
+      border-top: 1px solid #eee;
+      margin-top: 4rem;
+    }
   </style>
 </head>
 <body>
@@ -92,67 +124,32 @@
     <nav>
       <h1>Nadaarte</h1>
       <ul>
-        <li><a href="index.html" class="nav-link" data-target="index.html">Home</a></li>
-        <li><a href="gallery.html" class="nav-link" data-target="gallery.html">Gallery</a></li>
-        <li><a href="about.html" class="nav-link" data-target="about.html">About</a></li>
-        <li><a href="contact.html" class="nav-link" data-target="contact.html">Contact</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="gallery.html">Gallery</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html" aria-current="page">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- 其他页面内容省略 -->
+  <main>
+    <h2>Contact Me</h2>
+    <form>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required />
 
-  <script>
-    // 初始化状态，从 localStorage 读
-    document.querySelectorAll('.nav-link').forEach(link => {
-      const href = link.dataset.target;
-      const storedCount = localStorage.getItem('navClickCount_' + href);
-      const count = storedCount ? parseInt(storedCount) : 0;
-      link.dataset.clickCount = count;
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required />
 
-      if (count === 1) {
-        link.classList.add('clicked-once');
-      } else if (count >= 2) {
-        link.classList.add('clicked-twice');
-      }
+      <label for="message">Message</label>
+      <textarea id="message" name="message" required></textarea>
 
-      link.addEventListener('click', function(e) {
-        e.preventDefault();
+      <button type="submit">Send</button>
+    </form>
+  </main>
 
-        let count = parseInt(this.dataset.clickCount) || 0;
-        count++;
-
-        if (count === 1) {
-          this.classList.add('clicked-once');
-
-          const word = this.textContent;
-          const rect = this.getBoundingClientRect();
-
-          const fallingWord = document.createElement('div');
-          fallingWord.textContent = word;
-          fallingWord.className = 'falling-word';
-          fallingWord.style.left = rect.left + 'px';
-          fallingWord.style.top = rect.top + 'px';
-
-          document.body.appendChild(fallingWord);
-
-          // 2秒后自动移除动画元素
-          setTimeout(() => {
-            fallingWord.remove();
-          }, 2000);
-        } else if (count === 2) {
-          this.classList.remove('clicked-once');
-          this.classList.add('clicked-twice');
-          localStorage.setItem('navClickCount_' + this.dataset.target, count);
-
-          window.location.href = this.dataset.target;
-          return;
-        }
-
-        this.dataset.clickCount = count;
-        localStorage.setItem('navClickCount_' + this.dataset.target, count);
-      });
-    });
-  </script>
+  <footer>
+    <p>&copy; 2025 Nadaarte. All rights reserved.</p>
+  </footer>
 </body>
 </html>
