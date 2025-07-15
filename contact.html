@@ -50,6 +50,7 @@
     }
 
     main {
+      width: 100%;
       max-width: 600px;
       margin: 3rem auto 4rem;
       padding: 0 1rem;
@@ -57,9 +58,9 @@
 
     h2 {
       font-weight: 700;
-      font-size: 25px; /* 改成25px */
+      font-size: 25px;
       margin-bottom: 1rem;
-      color: #777; /* 灰色 */
+      color: #777;
       text-align: center;
     }
 
@@ -75,41 +76,50 @@
       display: flex;
       flex-direction: column;
       gap: 1rem;
+      align-items: center;
     }
 
     label {
       font-weight: 600;
       font-size: 1rem;
       color: #333;
+      align-self: flex-start;
+      margin-left: calc(50% - 190px); /* align with 380px input */
     }
 
     input[type="text"],
-    input[type="email"],
+    input[type="email"] {
+      width: 380px;
+      padding: 0.5rem 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1rem;
+    }
+
     textarea {
-      padding: 0.75rem;
+      width: 380px;
+      padding: 0.5rem 0.75rem;
       border: 1px solid #ccc;
       border-radius: 6px;
       font-family: 'Playfair Display', serif;
       font-size: 1rem;
       resize: vertical;
-      min-height: 100px;
-    }
-
-    textarea {
-      min-height: 120px;
+      min-height: 80px; /* 👈 已改为 80px */
     }
 
     button {
       background-color: #b35825;
       color: white;
       border: none;
-      padding: 0.75rem;
-      font-size: 0.9rem; /* 按钮字体小一倍 */
+      padding: 0.6rem;
+      font-size: 0.9rem;
       border-radius: 6px;
       cursor: pointer;
       transition: background-color 0.3s ease;
       font-family: 'Playfair Display', serif;
       font-weight: 700;
+      width: 200px;
     }
 
     button:hover {
