@@ -11,6 +11,7 @@
       font-family: 'Playfair Display', serif;
       background: #fafafa;
       overflow-x: hidden;
+      color: #222;
     }
 
     header {
@@ -26,20 +27,27 @@
       background: rgba(255, 255, 255, 0.9);
       width: 100%;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      font-size: 1rem; /* 导航字体大小 */
+      text-transform: none; /* 确保无大写 */
     }
 
     .logo {
-      font-size: 2rem;
       font-weight: 700;
-      letter-spacing: -0.05em;
+      font-size: 2rem;      /* 跟其他页面保持一致 */
+      letter-spacing: -0.05em; /* 之前你的间距 */
       cursor: default;
       display: flex;
       gap: 0.2rem;
+      user-select: none;
+      text-transform: none; /* 取消大写 */
+      color: #000; /* 黑色字体 */
     }
 
     .logo span {
       cursor: pointer;
       transition: opacity 0.3s ease, transform 2s ease-out;
+      text-transform: none; /* 取消大写 */
+      display: inline-block;
     }
 
     nav ul {
@@ -48,13 +56,15 @@
       gap: 2rem;
       margin: 0;
       padding: 0;
-      font-size: 1rem;
+      color: #222;
     }
 
     nav ul li a {
       text-decoration: none;
       color: #222;
       transition: color 0.3s ease;
+      text-transform: none; /* 取消大写 */
+      font-weight: 400;
     }
 
     nav ul li a:hover {
@@ -159,7 +169,7 @@
       font-family: 'Playfair Display', serif;
       pointer-events: none;
       opacity: 0.5;
-      font-size: 2rem;
+      font-size: 1rem;
       transform-origin: center;
       transition: transform 2.5s ease-out, opacity 2.5s ease-out;
       z-index: 5;
@@ -178,7 +188,7 @@
   <header>
     <nav>
       <div class="logo" id="logo">
-        <span>N</span><span>A</span><span>D</span><span>A</span><span>A</span><span>R</span><span>T</span><span>E</span>
+        <span>N</span><span>a</span><span>d</span><span>a</span><span>a</span><span>r</span><span>t</span><span>e</span>
       </div>
       <ul>
         <li><a href="#">Home</a></li>
@@ -196,7 +206,7 @@
     </section>
 
     <section class="gallery" id="gallery">
-      <!-- Images inserted by JS -->
+      <!-- 图片由JS插入 -->
     </section>
   </main>
 
@@ -211,33 +221,12 @@
   </footer>
 
   <script>
-    // Gallery images
     const galleryData = [
-      {
-        src: "010.jpg",
-        alt: "Artwork 1",
-        description: "Lanzarote Oil Painting – 2022, 70×50cm"
-      },
-      {
-        src: "008.jpg",
-        alt: "Artwork 2",
-        description: "Almeria Oil Painting – 2022, 70×50cm"
-      },
-      {
-        src: "004.jpg",
-        alt: "Artwork 3",
-        description: "Frida Oil Painting – 2022, 50×70cm"
-      },
-      {
-        src: "006.jpg",
-        alt: "Artwork 4",
-        description: "Santander Oil Painting – 2022, 70×50cm"
-      },
-      {
-        src: "002.jpg",
-        alt: "Artwork 5",
-        description: "David Bowie Oil Painting – 2022, 50×70cm"
-      }
+      { src: "010.jpg", alt: "Artwork 1", description: "Lanzarote Oil Painting – 2022, 70×50cm" },
+      { src: "008.jpg", alt: "Artwork 2", description: "Almeria Oil Painting – 2022, 70×50cm" },
+      { src: "004.jpg", alt: "Artwork 3", description: "Frida Oil Painting – 2022, 50×70cm" },
+      { src: "006.jpg", alt: "Artwork 4", description: "Santander Oil Painting – 2022, 70×50cm" },
+      { src: "002.jpg", alt: "Artwork 5", description: "David Bowie Oil Painting – 2022, 50×70cm" }
     ];
 
     const gallery = document.getElementById('gallery');
@@ -274,7 +263,7 @@
       }
     });
 
-    // Falling logo letters
+    // Nadaarte 字母掉落动画
     const logo = document.getElementById('logo');
     logo.querySelectorAll('span').forEach(letter => {
       letter.addEventListener('click', () => {
@@ -283,17 +272,4 @@
         clone.classList.add('fallen-letter');
         clone.style.left = `${rect.left}px`;
         clone.style.top = `${rect.top}px`;
-        // 颜色：红色，天蓝色 (#00aaff)，黄色
-        clone.style.color = ['red', '#00aaff', 'yellow'][Math.floor(Math.random() * 3)];
-
-        document.body.appendChild(clone);
-        letter.style.opacity = 0;
-
-        setTimeout(() => {
-          const dropY = window.innerHeight / 2 + Math.random() * 300;
-          const rotation = (Math.random() * 360 - 180).toFixed(1);
-          clone.style.transform = `translateY(${dropY}px) rotate(${rotation}deg) scale(10)`;
-        }, 10);
-      });
-    });
-  </script>
+        clone.style.color = ['red', '#00a
