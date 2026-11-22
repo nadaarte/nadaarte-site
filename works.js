@@ -1,97 +1,97 @@
 window.NADA_WORKS = [
   {
-    "src": "artworks/IMG_2887.jpeg",
+    "src": "IMG_2887.jpeg",
     "title": "Garden in Bloom",
     "group": "Recent works",
     "year": "2026",
     "description": "Working title · Confirm with artist"
   },
   {
-    "src": "artworks/IMG_2886.jpeg",
+    "src": "IMG_2886.jpeg",
     "title": "Lanzarote",
     "group": "Recent works",
     "year": "2026",
     "description": "Working title · Confirm with artist"
   },
   {
-    "src": "artworks/IMG_2885.jpeg",
+    "src": "IMG_2885.jpeg",
     "title": "Valencia Marina",
     "group": "Recent works",
     "year": "2026",
     "description": "Working title · Confirm with artist"
   },
   {
-    "src": "artworks/IMG_2877.jpeg",
+    "src": "IMG_2877.jpeg",
     "title": "Elche Palm Grove",
     "group": "Recent works",
     "year": "2026",
     "description": "Working title · Confirm with artist"
   },
   {
-    "src": "artworks/IMG_2874.jpeg",
+    "src": "IMG_2874.jpeg",
     "title": "Zeewolde Sunset",
     "group": "Recent works",
     "year": "2026",
     "description": "Working title · Confirm with artist"
   },
   {
-    "src": "artworks/IMG_9631.jpeg",
+    "src": "IMG_9631.jpeg",
     "title": "Woodland Light",
     "group": "Recent works",
     "year": null,
     "description": "Working title · Confirm with artist"
   },
   {
-    "src": "artworks/IMG_7721.jpeg",
+    "src": "IMG_7721.jpeg",
     "title": "Palm Garden",
     "group": "Recent works",
     "year": "2026",
     "description": "Working title · Confirm with artist"
   },
   {
-    "src": "artworks/IMG_7720.jpeg",
+    "src": "IMG_7720.jpeg",
     "title": "Forest Path",
     "group": "Recent works",
     "year": "2026",
     "description": "Working title · Confirm with artist"
   },
   {
-    "src": "artworks/IMG_7712.jpeg",
+    "src": "IMG_7712.jpeg",
     "title": "Woodland Stream",
     "group": "Recent works",
     "year": "2026",
     "description": "Working title · Confirm with artist"
   },
   {
-    "src": "artworks/IMG_7711.jpeg",
+    "src": "IMG_7711.jpeg",
     "title": "Winter Lights",
     "group": "Recent works",
     "year": "2026",
     "description": "Working title · Confirm with artist"
   },
   {
-    "src": "artworks/IMG_7699.jpeg",
+    "src": "IMG_7699.jpeg",
     "title": "Snow in Rijswijk",
     "group": "Recent works",
     "year": "2026",
     "description": "Working title · Confirm with artist"
   },
   {
-    "src": "artworks/IMG_7693.jpeg",
+    "src": "IMG_7693.jpeg",
     "title": "Country Road",
     "group": "Recent works",
     "year": "2026",
     "description": "Working title · Confirm with artist"
   },
   {
-    "src": "artworks/IMG_7482.jpeg",
+    "src": "IMG_7482.jpeg",
     "title": "Autumn in Rijswijk",
     "group": "Recent works",
     "year": "2025",
     "description": "Working title · Confirm with artist"
   },
   {
-    "src": "artworks/IMG_7471.jpeg",
+    "src": "IMG_7471.jpeg",
     "title": "Reflections in Rijswijk",
     "group": "Recent works",
     "year": "2025",
